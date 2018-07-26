@@ -11,16 +11,10 @@
 	<link rel="manifest" href="/manifest.json">
 	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#394451">
 	<meta name="theme-color" content="#394451">
-	<link rel="stylesheet" href="js/highlight.js/styles/paraiso.dark.css">
-	<script src="js/jquery-3.2.1.min.js"></script>
+	<link rel="stylesheet" href="js/highlight.js/styles/paraiso-dark.css">
+	<script src="js/jquery-3.3.1.min.js"></script>
 	<script src="js/highlight.js/highlight.pack.js"></script>
-	<script>
-	$(document).ready(function() {
-		$('code.html.full, code.css.full, figure code.html, figure code.css').each(function(i, block) {
-			hljs.highlightBlock(block);
-		});
-	});
-	</script>
+	<script src="js/core.js"></script>
 	<meta property="og:title" content="The Standard Ebooks Structure and Semantics Manual" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://standardebooks.org" />
@@ -113,7 +107,7 @@ It was a dark and stormy night...
 						<li>
 							<p>The first two lines of all CSS files are:</p>
 							<figure>
-								<code class="css">@charset "utf-8";
+								<code class="css full">@charset "utf-8";
 @namespace epub "http://www.idpf.org/2007/ops";</code>
 							</figure>
 						</li>
@@ -133,7 +127,7 @@ It was a dark and stormy night...
 							<li>
 								<p>Complete selectors are separated by exactly one blank line.</p>
 								<figure class="wrong">
-									<code class="css">abbr.name{
+									<code class="css full">abbr.name{
 	white-space: nowrap;
 }
 
@@ -145,7 +139,7 @@ strong{
 }</code>
 								</figure>
 								<figure class="corrected">
-									<code class="css">abbr.name{
+									<code class="css full">abbr.name{
 	white-space: nowrap;
 }
 
@@ -166,10 +160,10 @@ strong{
 							<li>
 								<p>Properties are each on their own line (even if the selector only has one property) and indented with a single tab.</p>
 								<figure class="wrong">
-									<code class="css">abbr.name{ white-space; nowrap; }</code>
+									<code class="css full">abbr.name{ white-space; nowrap; }</code>
 								</figure>
 								<figure class="corrected">
-									<code class="css">abbr.name{
+									<code class="css full">abbr.name{
 	white-space: nowrap;
 }</code>
 								</figure>
@@ -843,6 +837,10 @@ strong{
 
 			</section>
 		</article>
+
+		Misc:
+		- Do not use apostrophes to pluralize numbers or abbreviations. For example, "The 1800s", "IOUs". Note that apostrophes are still used for possessive: "The MP's daughter"
+		- Elision: one -> un needs an apostrophe: ’un
 	</main>
 	<footer>
 		<ul>

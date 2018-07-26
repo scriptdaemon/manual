@@ -807,6 +807,9 @@ h2{
 	font-family: 'League Spartan', sans-serif;
 	margin-top: 4rem;
 	line-height: 1.2;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	margin-left: -1rem;
 }
 
 h3,
@@ -989,13 +992,13 @@ code.marc{
 	padding: 0 .25rem;
 }
 
-
 figure code.html,
 figure code.css{
 	padding: 1rem;
 	background: #333;
 	border: none;
 	text-align: left;
+	color: #fff !important; /* in case code highlighting fails */
 }
 
 code.html.full,
@@ -1287,6 +1290,11 @@ p.no-results{
 	font-style: italic;
 }
 
+.us-pd-warning{
+	font-style: italic;
+	margin-top: 1rem;
+}
+
 input[type="search"]{
 	font-size: 1rem;
 	width: 100%;
@@ -1372,6 +1380,28 @@ article nav ol li.highlighted::after{
 article nav ol li.highlighted:first-child::before,
 article nav ol li.highlighted:last-child::after{
 	display: none;
+}
+
+#producing-an-ebook > ol {
+	counter-reset: item;
+	margin-left: 0;
+	padding-left: 0;
+	list-style: none;
+}
+
+#producing-an-ebook > ol > li::before {
+	float: left;
+	content: counter(item) ".";
+	counter-increment: item;
+	width: 4rem;
+	text-align: right;
+	margin-left: -5.5rem;
+
+	font-size: 1.2rem;
+	font-family: 'League Spartan', sans-serif;
+	line-height: 1.2;
+	letter-spacing: 1px;
+	text-transform: uppercase;
 }
 
 .manual section,

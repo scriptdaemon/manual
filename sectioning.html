@@ -36,24 +36,31 @@
 	</header>
 	<main>
 		<article class="manual">
-			<h1>Style Manual</h1>
+			<section>
+				<h2>Sectioning</h2>
+				<ol>
+					<li>
+						<p>Structural divisions in an ebook are each contained in their own <code class="html">&lt;section&gt;</code> tag.</p>
+					</li>
+					<li>
+						<p>In <code class="html">&lt;section&gt;</code>s that have titles, the first child element is an <code class="html">&lt;h#&gt;</code> or a <code class="html">&lt;header&gt;</code> element containing the section's title.</p>
 
-			<aside class="alert">
-				<p>This manual is an incomplete draft. Do not use this for production work. Formatting is a work-in-progress.</p>
-			</aside>
-			<h2>Table of Contents</h2>
-			<ol>
-				<li><p><a href="code-style.html">XHTML and CSS Code Style</a></p></li>
-				<li><p><a href="filesystem.html">Filesystem Layout and File Naming Conventions</a></p></li>
-				<li><p><a href="parts-of-a-book.html">Parts of an Ebook and Their Order</a></p></li>
-				<li><p><a href="semantic-inflection.html">Semantic Inflection</a></p></li>
-				<li><p><a href="general-xhtml-patterns.html">General XHTML Patterns</a></p></li>
-				<li><p><a href="sectioning.html">Sectioning</a></p></li>
-				<li><p><a href="toc-patterns.html">Table of Contents Patterns (TODO)</a></p></li>
-				<li><p><a href="high-level-structural-patterns.html">High-Level Structural Patterns (TODO)</a></p></li>
-				<li><p><a href="svg-code-style.html">SVG Code Style</a></p></li>
-				<li><p><a href="typography.html">Typography</a></p></li>
-			</ol>
+					</li>
+					<li>
+						<p>Typically an epub is divided into many different files. However, these files must be "recomposable" into a single HTML file by the <code class="path">recompose-epub</code> tool.</p>
+						<p>To achieve recomposability, individual files that contain subsections also contain all of the direct parent <code class="html">&lt;section&gt;</code> tags, with <code class="html">id</code> and <code class="html">epub:type</code> attributes identical to those parents.</p>
+						<p>For example, consider an ebook containing both a file named <code class="path">part-1.xhtml</code>, the first part, and a file named <code class="path">chapter-1-1.xhtml</code>, the first chapter of the first part. <code class="path">chapter-1-1.xhtml</code> contains a <code class="html">&lt;section&gt;</code> element for <em>both</em> the parent part, <em>and</em> the actual chapter:</p>
+						<figure class="corrected">
+							<code class="html">&lt;section id="part-1" epub:type="part"&gt;
+	&lt;section id="chapter-1-1" epub:type="chapter"&gt;
+		&lt;h3 epub:type="title z3998:roman">I&lt;/h3&gt;
+		&lt;p&gt;...&lt;/p&gt;
+	&lt;/section&gt;
+&lt;/section&gt;</code>
+						</figure>
+					</li>
+				</ol>
+			</section>
 		</article>
 	</main>
 	<footer>

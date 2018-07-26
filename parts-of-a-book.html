@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8" />
+	<title>Style Manual | Standard Ebooks</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/core.css" type="text/css" media="screen">
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+	<link rel="manifest" href="/manifest.json">
+	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#394451">
+	<meta name="theme-color" content="#394451">
+	<link rel="stylesheet" href="js/highlight.js/styles/paraiso-dark.css">
+	<script src="js/jquery-3.3.1.min.js"></script>
+	<script src="js/highlight.js/highlight.pack.js"></script>
+	<script src="js/core.js"></script>
+	<meta property="og:title" content="The Standard Ebooks Structure and Semantics Manual" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://standardebooks.org" />
+	<meta property="og:image" content="https://standardebooks.org/images/logo.png" />
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:site" content="@standardebooks">
+	<meta name="twitter:creator" content="@standardebooks">
+</head>
+<body>
+	<header>
+		<a href="/">Standard Ebooks</a>
+		<nav>
+			<ul>
+				<li><a href="/ebooks/">Ebooks</a></li>
+				<li><a href="/about/">About</a></li>
+				<li><a href="/contribute/" class="highlighted">Get Involved</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<article class="manual">
+			<section>
+				<p>(Describe what is frontmatter, bodymatter, backmatter, how an intro differs from a foreword, etc.)</p>
+				<p>What should go here is a list of all of the various parts of an ebook that we might find in the epub semantic inflection vocabulary. For example a list containing foreword, preface, epigraph, colophon, etc., and what those mean and how they differ from each other.</p>
+				<p>This section should be useful for people who encounter a particular part of a text and ask themselves, "What would the correct semantic inflection be for this? Is this a foreword? A preface?" etc.</p>
+
+				<h2>Parts of an ebook and their order</h2>
+				<section>
+					<h3>Frontmatter</h3>
+					<p>Frontmatter includes these parts of a book, in no particular order:</p>
+					<ul>
+						<li>
+							<p>Titlepage: An SE template containing an image with the title, author, and translator.</p>
+						</li>
+						<li>
+							<p>Imprint: An SE template containing information about Standard Ebooks and links to the source transcription and scans used to produce this ebook.</p>
+						</li>
+						<li>
+							<p>Dedication: A dedication from the author.</p>
+						</li>
+						<li>
+							<p>Epigraph: An opening poem or quotation.</p>
+						</li>
+						<li>
+							<p>Acknowledgements: A list of people that the author wishes to thank.</p>
+						</li>
+						<li>
+							<p>Foreword: An introduction to the text, written by someone besides the author.</p>
+						</li>
+						<li>
+							<p>Preface: An introduction to the text but standing outside of the text itself, written by the author. Often describes how a book came into being or to establish the author's credentials. "About the book as a book."</p>
+						</li>
+						<li>
+							<p>Introduction: An introduction to the text written, by the author. "About the content of the book."</p>
+						</li>
+						<li>
+							<p>Prologue: An opening to the text that establishes setting or mood, usually in the voice of the text.</p>
+						</li>
+					</ul>
+					<p>Note that in a Standard Ebooks ebook, the copyright page is part of the backmatter and not the frontmatter.</p>
+				</section>
+				<section>
+					<h3>Backmatter</h3>
+					<p>Backmatter includes these parts of a book, in no particular order:</p>
+					<ul>
+						<li>
+							<p>Epilogue: A conclusion to the text, usually in the voice of the text..</p>
+						</li>
+						<li>
+							<p>Afterword: A note from the author to conclude the text, outside of the text itself.</p>
+						</li>
+						<li>
+							<p>Endnotes: Any supplementary notes referenced in the text.</p>
+						</li>
+						<li>
+							<p>Colophon: A description of publishing details regarding the specific edition of the text, including credits or contributors.</p>
+						</li>
+						<li>
+							<p>Copyright page: Usually considered frontmatter in print texts, but considered backmatter in Standard Ebooks ebooks.</p>
+						</li>
+					</ul>
+				</section>
+				<section>
+					<h3>Ordering of sections</h3>
+					<ol>
+						<li>
+							<p>The first section of an ebook is <code class="path">titlepage.xhtml</code>.</p>
+						</li>
+						<li>
+							<p>The second section of an ebook is <code class="path">imprint.xhtml</code>. The imprint contains links to the source transcription and scans used to produce the Standard Ebooks edition.</p>
+						</li>
+						<li>
+							<p>Any frontmatter relevant to the text follows.</p>
+						</li>
+						<li>
+							<p>If there is frontmatter, then a half title page follows.</p>
+							<section>
+								<h4>Half title page patterns</h4>
+								<p>The half title page contains the work title and subtitle.</p>
+								<ol>
+									<li>
+										<p>Half title pages without subtitles:</p>
+										<figure>
+											<code class="html full">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" epub:prefix="z3998: http://www.daisy.org/z3998/2012/vocab/structure/, se: http://standardebooks.org/vocab/1.0" xml:lang="en-GB"&gt;
+	&lt;head&gt;
+		&lt;title&gt;Half Title&lt;/title&gt;
+		&lt;link href="../css/core.css" rel="stylesheet" type="text/css"/&gt;
+		&lt;link href="../css/local.css" rel="stylesheet" type="text/css"/&gt;
+	&lt;/head&gt;
+	&lt;body epub:type="frontmatter"&gt;
+		&lt;section id="halftitlepage" epub:type="halftitlepage"&gt;
+			&lt;h1 epub:type="fulltitle"&gt;Don Quixote&lt;/h1&gt;
+		&lt;/section&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</code>
+										</figure>
+									</li>
+									<li>
+										<p>Half title pages with subtitles:</p>
+										<figure>
+											<code class="css full">section[epub|type~="halftitlepage"] span[epub|type~="subtitle"]{
+	display: block;
+	font-size: .75em;
+	font-weight: normal;
+}</code>
+				<code class="html full">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" epub:prefix="z3998: http://www.daisy.org/z3998/2012/vocab/structure/, se: http://standardebooks.org/vocab/1.0" xml:lang="en-GB"&gt;
+	&lt;head&gt;
+		&lt;title&gt;Half Title&lt;/title&gt;
+		&lt;link href="../css/core.css" rel="stylesheet" type="text/css"/&gt;
+		&lt;link href="../css/local.css" rel="stylesheet" type="text/css"/&gt;
+	&lt;/head&gt;
+	&lt;body epub:type="frontmatter"&gt;
+		&lt;section id="halftitlepage" epub:type="halftitlepage"&gt;
+			&lt;h1 epub:type="fulltitle"&gt;
+				&lt;span epub:type="title"&gt;The Book of Wonder&lt;/span&gt;
+				&lt;span epub:type="subtitle"&gt;A Chronicle of Little Adventures at the Edge of the World&lt;/span&gt;
+			&lt;/h1&gt;
+		&lt;/section&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</code>
+										</figure>
+									</li>
+								</ol>
+							</section>
+						</li>
+						<li>
+							<p>Bodymatter (the main text) follows the frontmatter and half title page.</p>
+						</li>
+						<li>
+							<p>After the bodymatter, backmatter within the text follows, for example an afterword, epilogue, or conclusion.</p>
+						</li>
+						<li>
+							<p>Endnotes follow the text's backmatter. Endnotes files are named <code class="path">endnotes.xhtml</code>.</p>
+						</li>
+						<li>
+							<p>The colophon follows.</p>
+						</li>
+						<li>
+							<p>The uncopyright page follows the colophon.</p>
+						</li>
+					</ol>
+				</section>
+			</section>
+		</article>
+	</main>
+	<footer>
+		<ul>
+			<li><a href="/ebooks/">Ebooks</a></li>
+			<li><a href="/about/">About</a></li>
+			<li><a href="/contribute/">Get Involved</a></li>
+			<li><a href="https://github.com/standardebooks">Github</a></li>
+			<li><a href="/opds/">OPDS</a></li>
+		</ul>
+		<p>Content produced by or for the Standard Ebooks project is dedicated to the <a href="https://en.wikipedia.org/wiki/Public_domain">public domain</a> via the <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0 Universal Public Domain Dedication</a>.</p>
+		<p>Content not produced by or for the Standard Ebooks project but displayed on this website may be subject to copyright.</p>
+		<p><a href="/">Standard Ebooks</a></p>
+	</footer>
+</body>
+</html>

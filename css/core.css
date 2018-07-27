@@ -832,8 +832,9 @@ body > footer{
 
 footer p:last-child a{
 	font-size: 0;
-	display: block;
+	display: inline-block;
 	margin: auto;
+	margin-top: 2rem;
 }
 
 footer p:last-child a::before{
@@ -845,7 +846,6 @@ footer p:last-child a::before{
 	height: 2.5rem;
 	width: calc(4rem - 1px);
 	margin: auto;
-	margin-top: 2rem;
 }
 
 footer ul{
@@ -1008,10 +1008,12 @@ code.css.full{
 	padding: 1rem;
 	background: #333;
 	text-align: left;
+	color: #fff !important; /* in case code highlighting fails */
 }
 
 code.full{
 	margin-top: 1rem;
+	color: #fff !important; /* in case code highlighting fails */
 }
 
 code.full::before{

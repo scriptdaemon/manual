@@ -65,8 +65,14 @@
 					</section>
 					<section>
 						<h4><code class="html">id</code>s of other elements</h4>
-						<p>Generally, elements that are not <code class="html">&lt;section&gt;</code>s do not have an <code class="html">id</code> attribute. However an <code class="html">id</code> attribute might be necessary if a particular element is referenced in a link in a different location in the ebook; for example, if a certain paragraph is linked from an endnote.</p>
+						<p>Generally, elements that are not <code class="html">&lt;section&gt;</code>s do not have an <code class="html">id</code> attribute. However an <code class="html">id</code> attribute may be necessary if a particular element is referenced in a link in a different location in the ebook; for example, if a certain paragraph is linked from an endnote.</p>
 						<ol>
+							<li>
+								<p><code class="html">id</code> attributes are generally used for parts of the document that a reader may wish to navigate to using a hash in the URL. That generally means major structural divisions.</p>
+							</li>
+							<li>
+								<p><code class="html">id</code> attributes are not used as hooks for targeting CSS styling.</p>
+							</li>
 							<li>
 								<p>If an element requires an <code class="html">id</code> attribute, the attribute's value is the name of the tag followed by <code class="path">-N</code>, where <code class="path">N</code> is the sequence number of the tag start at <code class="html">1</code>.</p>
 								<figure class="corrected">

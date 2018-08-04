@@ -5,32 +5,20 @@
 # rst2html5 --stylesheet=monokai.css test.rst > test.html
 
 for filename in *.rst; do
-	outputFilename="${filename%.*}.html"
+	# Line 20: SE extension: :italics:`abc <def>` will generate a link like so: <i><a href="def">abc</a></i>
+	# Line 21: SE extension: change <em class="i"> to <i>
 
-	rst2html5 --stylesheet="css/monokai.css" --stylesheet="css/core.css" "${filename}" > "${outputFilename}"
-
-	sed -i --regexp-extended 's|<body>|<body><main><article class="manual">|g' "${outputFilename}"
-
-	sed -i --regexp-extended 's|</body>|</article></main></body>|g' "${outputFilename}"
-
-	sed -i --regexp-extended 's|<span></span>||g' "${outputFilename}"
-
-	sed -i --regexp-extended 's|<pre data-language="([^"]+?)">|<figure><code class="\1 full">|g' "${outputFilename}"
-
-	sed -i --regexp-extended 's|<pre class="([^"]+?)" data-language="([^"]+?)">|<figure class="\1"><code class="\2 full">|g' "${outputFilename}"
-
-	sed -i --regexp-extended 's|<pre data-language="([^"]+?)" class="([^"]+?)">|<figure class="\2"><code class="\1 full">|g' "${outputFilename}"
-
-	sed -i --regexp-extended 's|</pre>|</code></figure>|g' "${outputFilename}"
-
-	# SE extension: :italics:`abc <def>` will generate a link like so: <i><a href="def">abc</a></i>
-	sed -i --regexp-extended 's|<em class="i">([^>]+?) &lt;([^<]+?)&gt;</em>|<i><a href="\2">\1</a></i>|g' "${outputFilename}"
-
-	# SE extension: change <em class="i"> to <i>
-	sed -i --regexp-extended 's|<em class="i">([^<]+?)</em>|<i>\1</i>|g' "${outputFilename}"
-
-	# Spaces to tabs
-	sed -i --regexp-extended 's|    |\t|g' "${outputFilename}"
-
-	/standardebooks.org/tools/clean "${outputFilename}"
+	rst2html5 "${filename}" \
+	| perl -0777 -pe "s|.+<body>||s" \
+	| perl -0777 -pe "s|</body>.*||s" \
+	| sed --regexp-extended 's|    |\t|g' \
+	| sed --regexp-extended 's|<span></span>||g' \
+	| sed --regexp-extended 's|<pre data-language="([^"]+?)">|<figure><code class="\1 full">|g' \
+	| sed --regexp-extended 's|<pre class="([^"]+?)" data-language="([^"]+?)">|<figure class="\1"><code class="\2 full">|g' \
+	| sed --regexp-extended 's|<pre data-language="([^"]+?)" class="([^"]+?)">|<figure class="\2"><code class="\1 full">|g' \
+	| sed --regexp-extended 's|</pre>|</code></figure>|g' \
+	| sed --regexp-extended 's|<em class="i">([^>]+?) &lt;([^<]+?)&gt;</em>|<i><a href="\2">\1</a></i>|g' \
+	| sed --regexp-extended 's|<em class="i">([^<]+?)</em>|<i>\1</i>|g' \
+	| cat templates/header.html - templates/footer.html \
+	| perl -pe 'chomp if eof' > "${filename%.*}.html"
 done

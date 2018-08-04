@@ -185,6 +185,8 @@ Images that are explicitly marked as CC0 from these museums can be used without 
 
 -	`National Museum Sweden <https://www.nationalmuseum.se/en/samlingarna/fria-bilder>`__ (CC-PD items have the CC-PD mark in the lower left of the item’s detail view)
 
+-	`Minneapolis Institute of Art <https://collections.artsmia.org/>`__ (Public domain items are listed as such under “Rights”)
+
 Clearance FAQ
 ~~~~~~~~~~~~~
 

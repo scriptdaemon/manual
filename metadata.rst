@@ -14,7 +14,7 @@ Metadata
 
 Metadata in a Standard Ebooks epub is stored in the :path:`./src/epub/content.opf` file. The file contains some boilerplate that an ebook producer won’t have to touch, and a lot of information that they *will* have to touch as an ebook is produced.
 
-Follow the general structure of the :path:`content.opf` file present in the tools :path:`./templates/` directory. Don't rearrange the order of anything in there.
+Follow the general structure of the :path:`content.opf` file present in the tools :path:`./templates/` directory. Don’t rearrange the order of anything in there.
 
 ********************
 The ebook identifier
@@ -250,7 +250,7 @@ Book transcription and page scan source
 Book production notes
 *********************
 
-#.	The :html:`<meta property="se:production-notes">` element contains any of the ebook producer's production notes. For example, the producer  might note that page scans were not available, so an editorial decision was made to add commas to sentences deemed to be transcription typos; or that certain archaic spellings were retained as a matter of prose style specific to this ebook.
+#.	The :html:`<meta property="se:production-notes">` element contains any of the ebook producer’s production notes. For example, the producer  might note that page scans were not available, so an editorial decision was made to add commas to sentences deemed to be transcription typos; or that certain archaic spellings were retained as a matter of prose style specific to this ebook.
 
 #.	The :html:`<meta property="se:production-notes">` element is not present if there are no production notes.
 
@@ -278,7 +278,7 @@ The author metadata block
 
 #.	:html:`<dc:creator id="author">` contains the author’s name as it appears on the cover.
 
-#.	If there is more than one author, the first author's :html:`id` is :html:`author-1`, the second :html:`author-2`, and so on.
+#.	If there is more than one author, the first author’s :html:`id` is :html:`author-1`, the second :html:`author-2`, and so on.
 
 #.	:html:`<meta property="file-as" refines="#author">` contains the author’s name as filed alphabetically. This element is included even if it’s identical to :html:`<dc:creator>`.
 
@@ -294,7 +294,7 @@ The author metadata block
 
 		This is easily found by visiting the person’s Wikipedia page and looking at the very bottom in the “Authority Control” section, under “LCCN.”
 
-		If you it's not on Wikipedia, find it directly by visiting the `Library of Congress Names Database <http://id.loc.gov/authorities/names.html>`__.
+		If you it’s not on Wikipedia, find it directly by visiting the `Library of Congress Names Database <http://id.loc.gov/authorities/names.html>`__.
 
 #.	:html:`<meta property="role" refines="#author" scheme="marc:relators">` contains the `MARC relator tag <http://www.loc.gov/marc/relators/relacode.html>`__ for the roles the author played in creating this book.
 
@@ -342,7 +342,7 @@ The illustrator metadata block
 The cover artist metadata block
 *******************************
 
-The "cover artist" is the artist who painted the art the producer selected for the SE ebook cover.
+The “cover artist” is the artist who painted the art the producer selected for the SE ebook cover.
 
 #.	The cover artist metadata block is identical to the author metadata block, but with :html:`<dc:contributor id="artist">` instead of :html:`<dc:creator id="author">`.
 
@@ -368,11 +368,11 @@ Transcriber metadata
 
 #.	If there is more than one transcriber, the first transcriber is :html:`transcriber-1`, the second :html:`transcriber-2`, and so on.
 
-#.	The :html:`<meta property="file-as" refines="#transcriber-1">` element contains an alpha-sorted representation of the transcriber's name.
+#.	The :html:`<meta property="file-as" refines="#transcriber-1">` element contains an alpha-sorted representation of the transcriber’s name.
 
 #.	The `MARC relator tag <http://www.loc.gov/marc/relators/relacode.html>`__ is :html:`trc`: :html:`<meta property="role" refines="#transcriber-1" scheme="marc:relators">trc</meta>`.
 
-#.	If the transcriber's personal homepage is known, the element :html:`<meta property="se:url.homepage" refines="#transcriber-1">` is included, whose value is the URL of the transcriber's homepage. The URL must link to a personal homepage only; no products, services, or other endorsements, commercial or otherwise.
+#.	If the transcriber’s personal homepage is known, the element :html:`<meta property="se:url.homepage" refines="#transcriber-1">` is included, whose value is the URL of the transcriber’s homepage. The URL must link to a personal homepage only; no products, services, or other endorsements, commercial or otherwise.
 
 *****************
 Producer metadata
@@ -384,7 +384,7 @@ These elements describe the SE producer who produced the ebook for the Standard 
 
 #.	The producer metadata block is identical to the author metadata block, but with :html:`<dc:contributor id="producer-1">` instead of :html:`<dc:creator id="author">`.
 
-#.	If the producer's personal homepage is known, the element :html:`<meta property="se:url.homepage" refines="#producer-1">` is included, whose value is the URL of the transcriber's homepage. The URL must link to a personal homepage only; no products, services, or other endorsements, commercial or otherwise.
+#.	If the producer’s personal homepage is known, the element :html:`<meta property="se:url.homepage" refines="#producer-1">` is included, whose value is the URL of the transcriber’s homepage. The URL must link to a personal homepage only; no products, services, or other endorsements, commercial or otherwise.
 
 #.	The `MARC relator tags <http://www.loc.gov/marc/relators/relacode.html>`__ for the SE producer usually include all of the following:
 
@@ -408,7 +408,7 @@ The :html:`<manifest>` element is a required part of the epub spec that defines 
 
 .. tip::
 
-	The :bash:`print-manifest-and-spine` tool generates a complete manifest that can be copied-and-pasted into the ebook's metadata file.
+	The :bash:`print-manifest-and-spine` tool generates a complete manifest that can be copied-and-pasted into the ebook’s metadata file.
 
 #.	The manifest is in alphabetical order.
 
@@ -428,4 +428,4 @@ The :html:`<spine>` element is a required part of the epub spec that defines the
 
 .. tip::
 
-	The :bash:`print-manifest-and-spine` tool generates a draft of the spine by making some educated guesses as to the reading order. The tool's output is never 100% correct; manual review of the output is required, and adjustments will be necessary to correct the reading order.
+	The :bash:`print-manifest-and-spine` tool generates a draft of the spine by making some educated guesses as to the reading order. The tool’s output is never 100% correct; manual review of the output is required, and adjustments will be necessary to correct the reading order.

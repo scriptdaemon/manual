@@ -3,14 +3,14 @@
 <head>
     <title>Metadata</title>
     <meta charset="utf-8" />
-    <link href="css/monokai.css" rel="stylesheet" />
-    <link href="css/core.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/monokai.css" />
+    <link rel="stylesheet" href="css/core.css" />
 </head>
 <body><main><article class="manual"
     <section id="metadata">
         <h1>Metadata</h1>
         <p>Metadata in a Standard Ebooks epub is stored in the <code class="path">./src/epub/content.opf</code> file. The file contains some boilerplate that an ebook producer won’t have to touch, and a lot of information that they <em>will</em> have to touch as an ebook is produced.</p>
-        <p>Follow the general structure of the <code class="path">content.opf</code> file present in the tools <code class="path">./templates/</code> directory. Don't rearrange the order of anything in there.</p>
+        <p>Follow the general structure of the <code class="path">content.opf</code> file present in the tools <code class="path">./templates/</code> directory. Don’t rearrange the order of anything in there.</p>
         <section id="the-ebook-identifier">
             <h2>The ebook identifier</h2>
             <ol type="1">
@@ -181,7 +181,7 @@
         <section id="book-production-notes">
             <h2>Book production notes</h2>
             <ol type="1">
-                <li>The <code class="html"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">"se:production-notes"</span><span class="p">&gt;</span></code> element contains any of the ebook producer's production notes. For example, the producer might note that page scans were not available, so an editorial decision was made to add commas to sentences deemed to be transcription typos; or that certain archaic spellings were retained as a matter of prose style specific to this ebook.</li>
+                <li>The <code class="html"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">"se:production-notes"</span><span class="p">&gt;</span></code> element contains any of the ebook producer’s production notes. For example, the producer might note that page scans were not available, so an editorial decision was made to add commas to sentences deemed to be transcription typos; or that certain archaic spellings were retained as a matter of prose style specific to this ebook.</li>
                 <li>The <code class="html"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">"se:production-notes"</span><span class="p">&gt;</span></code> element is not present if there are no production notes.</li>
             </ol>
         </section>
@@ -204,7 +204,7 @@
             <h2>The author metadata block</h2>
             <ol type="1">
                 <li><code class="html"><span class="p">&lt;</span><span class="nt">dc:creator</span> <span class="na">id</span><span class="o">=</span><span class="s">"author"</span><span class="p">&gt;</span></code> contains the author’s name as it appears on the cover.</li>
-                <li>If there is more than one author, the first author's <code class="html">id</code> is <code class="html">author-1</code>, the second <code class="html">author-2</code>, and so on.</li>
+                <li>If there is more than one author, the first author’s <code class="html">id</code> is <code class="html">author-1</code>, the second <code class="html">author-2</code>, and so on.</li>
                 <li><code class="html"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">"file-as"</span> <span class="na">refines</span><span class="o">=</span><span class="s">"#author"</span><span class="p">&gt;</span></code> contains the author’s name as filed alphabetically. This element is included even if it’s identical to <code class="html"><span class="p">&lt;</span><span class="nt">dc:creator</span><span class="p">&gt;</span></code>.</li>
                 <li><code class="html"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">"se:name.person.full-name"</span> <span class="na">refines</span><span class="o">=</span><span class="s">"#author"</span><span class="p">&gt;</span></code> contains the author’s full name, with any initials or middle names expanded, and including any titles. This element is not included if the value is identical to <code class="html"><span class="p">&lt;</span><span class="nt">dc:creator</span><span class="p">&gt;</span></code>.</li>
                 <li><code class="html"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">"alternate-script"</span> <span class="na">refines</span><span class="o">=</span><span class="s">"#author"</span><span class="p">&gt;</span></code> contains the author’s name as it appears on the cover, but transliterated into their native alphabet if applicable. For example, Anton Chekhov’s name would be contained here in the Cyrillic alphabet. This element is not included if not applicable.</li>
@@ -212,7 +212,7 @@
                 <li><code class="html"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">"se:url.authority.nacoaf"</span> <span class="na">refines</span><span class="o">=</span><span class="s">"#author"</span><span class="p">&gt;</span></code> contains the URL of the author’s <a href="http://id.loc.gov/authorities/names.html">Library of Congress Names Database</a> page. It does not include the <code class="path">.html</code> file extension. This element is not included if there is no LoC Names database entry.
                     <aside class="tip">
                         <p>This is easily found by visiting the person’s Wikipedia page and looking at the very bottom in the “Authority Control” section, under “LCCN.”</p>
-                        <p>If you it's not on Wikipedia, find it directly by visiting the <a href="http://id.loc.gov/authorities/names.html">Library of Congress Names Database</a>.</p>
+                        <p>If you it’s not on Wikipedia, find it directly by visiting the <a href="http://id.loc.gov/authorities/names.html">Library of Congress Names Database</a>.</p>
                     </aside>
                 </li>
                 <li><code class="html"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">"role"</span> <span class="na">refines</span><span class="o">=</span><span class="s">"#author"</span> <span class="na">scheme</span><span class="o">=</span><span class="s">"marc:relators"</span><span class="p">&gt;</span></code> contains the <a href="http://www.loc.gov/marc/relators/relacode.html">MARC relator tag</a> for the roles the author played in creating this book.
@@ -249,7 +249,7 @@
         </section>
         <section id="the-cover-artist-metadata-block">
             <h2>The cover artist metadata block</h2>
-            <p>The "cover artist" is the artist who painted the art the producer selected for the SE ebook cover.</p>
+            <p>The “cover artist” is the artist who painted the art the producer selected for the SE ebook cover.</p>
             <ol type="1">
                 <li>The cover artist metadata block is identical to the author metadata block, but with <code class="html"><span class="p">&lt;</span><span class="nt">dc:contributor</span> <span class="na">id</span><span class="o">=</span><span class="s">"artist"</span><span class="p">&gt;</span></code> instead of <code class="html"><span class="p">&lt;</span><span class="nt">dc:creator</span> <span class="na">id</span><span class="o">=</span><span class="s">"author"</span><span class="p">&gt;</span></code>.</li>
                 <li>The <a href="http://www.loc.gov/marc/relators/relacode.html">MARC relator tag</a> is <code class="html">art</code>: <code class="html"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">"role"</span> <span class="na">refines</span><span class="o">=</span><span class="s">"#artist"</span> <span class="na">scheme</span><span class="o">=</span><span class="s">"marc:relators"</span><span class="p">&gt;</span>art<span class="p">&lt;/</span><span class="nt">meta</span><span class="p">&gt;</span></code>.</li>
@@ -269,9 +269,9 @@
             <ol type="1">
                 <li>If the ebook is based on a transcription by someone else, like Project Gutenberg, then transcriber blocks follow.</li>
                 <li>If there is more than one transcriber, the first transcriber is <code class="html">transcriber-1</code>, the second <code class="html">transcriber-2</code>, and so on.</li>
-                <li>The <code class="html"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">"file-as"</span> <span class="na">refines</span><span class="o">=</span><span class="s">"#transcriber-1"</span><span class="p">&gt;</span></code> element contains an alpha-sorted representation of the transcriber's name.</li>
+                <li>The <code class="html"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">"file-as"</span> <span class="na">refines</span><span class="o">=</span><span class="s">"#transcriber-1"</span><span class="p">&gt;</span></code> element contains an alpha-sorted representation of the transcriber’s name.</li>
                 <li>The <a href="http://www.loc.gov/marc/relators/relacode.html">MARC relator tag</a> is <code class="html">trc</code>: <code class="html"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">"role"</span> <span class="na">refines</span><span class="o">=</span><span class="s">"#transcriber-1"</span> <span class="na">scheme</span><span class="o">=</span><span class="s">"marc:relators"</span><span class="p">&gt;</span>trc<span class="p">&lt;/</span><span class="nt">meta</span><span class="p">&gt;</span></code>.</li>
-                <li>If the transcriber's personal homepage is known, the element <code class="html"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">"se:url.homepage"</span> <span class="na">refines</span><span class="o">=</span><span class="s">"#transcriber-1"</span><span class="p">&gt;</span></code> is included, whose value is the URL of the transcriber's homepage. The URL must link to a personal homepage only; no products, services, or other endorsements, commercial or otherwise.</li>
+                <li>If the transcriber’s personal homepage is known, the element <code class="html"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">"se:url.homepage"</span> <span class="na">refines</span><span class="o">=</span><span class="s">"#transcriber-1"</span><span class="p">&gt;</span></code> is included, whose value is the URL of the transcriber’s homepage. The URL must link to a personal homepage only; no products, services, or other endorsements, commercial or otherwise.</li>
             </ol>
         </section>
         <section id="producer-metadata">
@@ -280,7 +280,7 @@
             <ol type="1">
                 <li>If there is more than one producer, the first producer is <code class="html">producer-1</code>, the second <code class="html">producere-2</code>, and so on.</li>
                 <li>The producer metadata block is identical to the author metadata block, but with <code class="html"><span class="p">&lt;</span><span class="nt">dc:contributor</span> <span class="na">id</span><span class="o">=</span><span class="s">"producer-1"</span><span class="p">&gt;</span></code> instead of <code class="html"><span class="p">&lt;</span><span class="nt">dc:creator</span> <span class="na">id</span><span class="o">=</span><span class="s">"author"</span><span class="p">&gt;</span></code>.</li>
-                <li>If the producer's personal homepage is known, the element <code class="html"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">"se:url.homepage"</span> <span class="na">refines</span><span class="o">=</span><span class="s">"#producer-1"</span><span class="p">&gt;</span></code> is included, whose value is the URL of the transcriber's homepage. The URL must link to a personal homepage only; no products, services, or other endorsements, commercial or otherwise.</li>
+                <li>If the producer’s personal homepage is known, the element <code class="html"><span class="p">&lt;</span><span class="nt">meta</span> <span class="na">property</span><span class="o">=</span><span class="s">"se:url.homepage"</span> <span class="na">refines</span><span class="o">=</span><span class="s">"#producer-1"</span><span class="p">&gt;</span></code> is included, whose value is the URL of the transcriber’s homepage. The URL must link to a personal homepage only; no products, services, or other endorsements, commercial or otherwise.</li>
                 <li>The <a href="http://www.loc.gov/marc/relators/relacode.html">MARC relator tags</a> for the SE producer usually include all of the following:
                     <ul>
                         <li><code class="html">bkp</code>: The producer produced the ebook.</li>
@@ -296,7 +296,7 @@
         <section id="the-ebook-manifest">
             <h2>The ebook manifest</h2>
             <p>The <code class="html"><span class="p">&lt;</span><span class="nt">manifest</span><span class="p">&gt;</span></code> element is a required part of the epub spec that defines a list of files within the ebook.</p>
-            <aside class="tip">The <code class="bash">print-manifest-and-spine</code> tool generates a complete manifest that can be copied-and-pasted into the ebook's metadata file.</aside>
+            <aside class="tip">The <code class="bash">print-manifest-and-spine</code> tool generates a complete manifest that can be copied-and-pasted into the ebook’s metadata file.</aside>
             <ol type="1">
                 <li>The manifest is in alphabetical order.</li>
                 <li>The <code class="html">id</code> attribute is the basename of the <code class="html">href</code> attribute.</li>
@@ -308,7 +308,7 @@
         <section id="the-ebook-spine">
             <h2>The ebook spine</h2>
             <p>The <code class="html"><span class="p">&lt;</span><span class="nt">spine</span><span class="p">&gt;</span></code> element is a required part of the epub spec that defines the reading order of the files in the ebook.</p>
-            <aside class="tip">The <code class="bash">print-manifest-and-spine</code> tool generates a draft of the spine by making some educated guesses as to the reading order. The tool's output is never 100% correct; manual review of the output is required, and adjustments will be necessary to correct the reading order.</aside>
+            <aside class="tip">The <code class="bash">print-manifest-and-spine</code> tool generates a draft of the spine by making some educated guesses as to the reading order. The tool’s output is never 100% correct; manual review of the output is required, and adjustments will be necessary to correct the reading order.</aside>
         </section>
     </section>
 </article></main></body>

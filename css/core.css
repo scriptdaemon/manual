@@ -75,7 +75,7 @@ html{
 	font-family: "Crimson Text", Georgia, serif;
 	-webkit-hyphens: auto;
 	hyphens: auto;
-	font-size: 20px;
+	font-size: 18px;
 	line-height: 1.6;
 	background: url('/images/paper.png') #fcf5dd; /* #faf5e3; */
 }
@@ -985,20 +985,19 @@ code.html,
 code.ietf,
 code.css,
 code.marc{
-	border: 1px solid rgba(255,255,255,.25);
-	background: rgba(255,255,255,.25);
+	border: none;
+	background: #333;
 	border-radius: .25rem;
 	white-space: pre-wrap;
-	padding: 0 .25rem;
+	padding: .25rem;
+	color: #fff;
 }
 
 figure code.html,
 figure code.css{
 	padding: 1rem;
-	background: #333;
 	border: none;
 	text-align: left;
-	color: #fff !important; /* in case code highlighting fails */
 }
 
 code.html.full,
@@ -1027,6 +1026,7 @@ code.full::before{
 
 code.html.full::before{
 	content: 'HTML';
+	font-size: .75rem;
 }
 
 code.css.full::before{
@@ -1035,7 +1035,7 @@ code.css.full::before{
 
 code{
 	font-family: 'Source Code Pro', monospace;
-	font-size: .9rem;
+	font-size: .75rem;
 }
 
 code.terminal{
@@ -1437,7 +1437,6 @@ article nav ol li.highlighted:last-child::after{
 .manual ol li::before{
 	counter-increment: item;
 	content: counters(item, ".");
-	font-style: italic;
 	position: absolute;
 	margin-left: -3rem;
 }
@@ -1467,6 +1466,11 @@ article nav ol li.highlighted:last-child::after{
 
 .manual table td code.path{
 	white-space: nowrap;
+}
+
+.manual aside.tip{
+	font-style: italic;
+	margin: 1rem;
 }
 
 @media(max-width: 1100px){

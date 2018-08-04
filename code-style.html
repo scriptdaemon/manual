@@ -1,216 +1,116 @@
-<!doctype html>
-<html lang="en-US">
+<!DOCTYPE html>
+<html>
 <head>
-	<meta charset="utf-8" />
-	<title>Style Manual | Standard Ebooks</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="css/core.css" type="text/css" media="screen">
-	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-	<link rel="manifest" href="/manifest.json">
-	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#394451">
-	<meta name="theme-color" content="#394451">
-	<link rel="stylesheet" href="js/highlight.js/styles/paraiso-dark.css">
-	<script src="js/jquery-3.3.1.min.js"></script>
-	<script src="js/highlight.js/highlight.pack.js"></script>
-	<script src="js/core.js"></script>
-	<meta property="og:title" content="The Standard Ebooks Structure and Semantics Manual" />
-	<meta property="og:type" content="website" />
-	<meta property="og:url" content="https://standardebooks.org" />
-	<meta property="og:image" content="https://standardebooks.org/images/logo.png" />
-	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:site" content="@standardebooks">
-	<meta name="twitter:creator" content="@standardebooks">
+    <title>XHTML and CSS Code Style</title>
+    <meta charset="utf-8" />
+    <link href="css/paraiso-dark.css" rel="stylesheet" />
+    <link href="css/core.css" rel="stylesheet" />
 </head>
-<body>
-	<header>
-		<a href="/">Standard Ebooks</a>
-		<nav>
-			<ul>
-				<li><a href="/ebooks/">Ebooks</a></li>
-				<li><a href="/about/">About</a></li>
-				<li><a href="/contribute/" class="highlighted">Get Involved</a></li>
-			</ul>
-		</nav>
-	</header>
-	<main>
-		<article class="manual">
-			<section>
-				<h2>XHTML and CSS Code Style</h2>
-				<p>The <code class="path">clean</code> tool in the Standard Ebooks toolset formats XHTML code according to our style guidelines. The vast majority of the time its output is correct and no further modifications to code style are necessary.</p>
-				<section>
-					<h3>XHTML formatting</h3>
-					<ol>
-						<li>
-							<p>The first line of all XHTML files is:</p>
-							<figure>
-								<code class="html">&lt;?xml version="1.0" encoding="utf-8"?&gt;</code>
-							</figure>
-						</li>
-						<li>
-							<p>The second line of all XHTML files is (replace <code class="html">LANG</code> with the <a href="https://en.wikipedia.org/wiki/IETF_language_tag">appropriate language tag</a> for the file):</p>
-							<figure>
-								<code class="html">&lt;html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" epub:prefix="z3998: http://www.daisy.org/z3998/2012/vocab/structure/, se: https://standardebooks.org/vocab/1.0" xml:lang="LANG"&gt;</code>
-							</figure>
-						</li>
-						<li>
-							<p>Tabs are used for indentation.</p>
-						</li>
-						<li>
-							<p>Tag names are lowercase.</p>
-						</li>
-						<li>
-							<p>Tags whose content is <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content">phrasing content</a> are on a single line, with no whitespace between the opening and closing tags and the content.</p>
-							<figure class="wrong">
-								<code class="html">&lt;p&gt;
-It was a dark and stormy night...
-&lt;/p&gt;</code>
-							</figure>
-							<figure class="corrected">
-								<code class="html">&lt;p&gt;It was a dark and stormy night...&lt;/p&gt;</code>
-							</figure>
-						</li>
-					</ol>
-					<section>
-						<h3>Attributes</h3>
-						<ol>
-							<li>
-								<p>Attributes are in alphabetical order.</p>
-							</li>
-							<li>
-								<p>Attributes, their namespaces, and their values are lowercase, except for values which are IETF language tags, where subtags are capitalized.</p>
-								<figure class="wrong">
-									<code class="html">&lt;section EPUB:TYPE="CHAPTER" XML:LANG="EN-US"&gt;...&lt;/section&gt;</code>
-								</figure>
-								<figure class="corrected">
-									<code class="html">&lt;section epub:type="chapter" xml:lang="en-US"&gt;...&lt;/section&gt;</code>
-								</figure>
-							</li>
-							<li>
-								<p>The string <code class="html">utf-8</code> is lowercase.</p>
-							</li>
-						</ol>
-					</section>
-				</section>
-				<section>
-					<h3>CSS formatting</h3>
-					<ol>
-						<li>
-							<p>The first two lines of all CSS files are:</p>
-							<figure>
-								<code class="css full">@charset "utf-8";
-@namespace epub "http://www.idpf.org/2007/ops";</code>
-							</figure>
-						</li>
-						<li>
-							<p>Tabs are used for indentation.</p>
-						</li>
-						<li>
-							<p>Selectors, properties, and values are lowercase.</p>
-						</li>
-					</ol>
-					<section>
-						<h3>Selectors</h3>
-						<ol>
-							<li>
-								<p>Selectors are each on their own line, directly followed by a comma or a brace with no whitespace inbetween.</p>
-							</li>
-							<li>
-								<p>Complete selectors are separated by exactly one blank line.</p>
-								<figure class="wrong">
-									<code class="css full">abbr.name{
-	white-space: nowrap;
-}
+<body><main><article class="manual"
+    <section id="xhtml-and-css-code-style">
+        <h1>XHTML and CSS Code Style</h1>
+        <p>The <code class="bash">clean</code> tool in the Standard Ebooks toolset formats XHTML code according to our style guidelines. The vast majority of the time its output is correct and no further modifications to code style are necessary.</p>
+        <section id="xhtml-formatting">
+            <h2>XHTML formatting</h2>
+            <ol type="1">
+                <li>The first line of all XHTML files is:
+                    <figure><code class="html full"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;</span></code></figure>
+                </li>
+                <li>The second line of all XHTML files is (replace <code class="html">xml:lang="en-US"</code> with the <a href="https://en.wikipedia.org/wiki/IETF_language_tag">appropriate language tag</a> for the file):
+                    <figure><code class="html full"><span class="p">&lt;</span><span class="nt">html</span> <span class="na">xmlns</span><span class="o">=</span><span class="s">&quot;http://www.w3.org/1999/xhtml&quot;</span> <span class="na">xmlns:epub</span><span class="o">=</span><span class="s">&quot;http://www.idpf.org/2007/ops&quot;</span> <span class="na">epub:prefix</span><span class="o">=</span><span class="s">&quot;z3998: http://www.daisy.org/z3998/2012/vocab/structure/, se: https://standardebooks.org/vocab/1.0&quot;</span> <span class="na">xml:lang</span><span class="o">=</span><span class="s">&quot;en-US&quot;</span><span class="p">&gt;</span>`</code></figure>
+                </li>
+                <li>Tabs are used for indentation.</li>
+                <li>Tag names are lowercase.</li>
+                <li>Tags whose content is <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Content_categories#Phrasing_content">phrasing content</a> are on a single line, with no whitespace between the opening and closing tags and the content.
+                    <figure class="wrong"><code class="html full"><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+    It was a dark and stormy night...
+<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></code></figure>
+                    <figure class="corrected"><code class="html full"><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>It was a dark and stormy night...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></code></figure>
+                </li>
+            </ol>
+            <section id="attributes">
+                <h3>Attributes</h3>
+                <ol type="1">
+                    <li>Attributes are in alphabetical order.</li>
+                    <li>Attributes, their namespaces, and their values are lowercase, except for values which are IETF language tags. In IETF language tags, the language subtag is capitalized.
+                        <figure class="wrong"><code class="html full"><span class="p">&lt;</span><span class="nt">section</span> <span class="na">EPUB:TYPE</span><span class="o">=</span><span class="s">&quot;CHAPTER&quot;</span> <span class="na">XML:LANG</span><span class="o">=</span><span class="s">&quot;EN-US&quot;</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span></code></figure>
+                        <figure class="corrected"><code class="html full"><span class="p">&lt;</span><span class="nt">section</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;chapter&quot;</span> <span class="na">xml:lang</span><span class="o">=</span><span class="s">&quot;en-US&quot;</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span></code></figure>
+                    </li>
+                    <li>The string <code class="html">utf-8</code> is lowercase.</li>
+                </ol>
+            </section>
+        </section>
+        <section id="css-formatting">
+            <h2>CSS Formatting</h2>
+            <ol type="1">
+                <li>The first two lines of all CSS files are:
+                    <figure><code class="css full"><span class="p">@</span><span class="k">charset</span> <span class="s2">&quot;utf-8&quot;</span><span class="p">;</span>
+<span class="p">@</span><span class="k">namespace</span> <span class="nt">epub</span> <span class="s2">&quot;http://www.idpf.org/2007/ops&quot;</span><span class="p">;</span></code></figure>
+                </li>
+                <li>Tabs are used for indentation.</li>
+                <li>Selectors, properties, and values are lowercase.</li>
+            </ol>
+            <section id="selectors">
+                <h3>Selectors</h3>
+                <ol type="1">
+                    <li>Selectors are each on their own line, directly followed by a comma or a brace with no whitespace inbetween.</li>
+                    <li>Complete selectors are separated by exactly one blank line.
+                        <figure class="wrong"><code class="css full"><span class="nt">abbr</span><span class="p">.</span><span class="nc">name</span><span class="p">{</span>
+    <span class="k">white-space</span><span class="p">:</span> <span class="kc">nowrap</span><span class="p">;</span>
+<span class="p">}</span>
 
 
+<span class="nt">strong</span><span class="p">{</span>
+    <span class="k">font-weight</span><span class="p">:</span> <span class="kc">normal</span><span class="p">;</span>
+    <span class="k">font-variant</span><span class="p">:</span> <span class="kc">small-caps</span><span class="p">;</span>
+<span class="p">}</span></code></figure>
+                        <figure class="corrected"><code class="css full"><span class="nt">abbr</span><span class="p">.</span><span class="nc">name</span><span class="p">{</span>
+    <span class="k">white-space</span><span class="p">:</span> <span class="kc">nowrap</span><span class="p">;</span>
+<span class="p">}</span>
 
-strong{
-	font-weight: normal;
-	font-variant: small-caps;
-}</code>
-								</figure>
-								<figure class="corrected">
-									<code class="css full">abbr.name{
-	white-space: nowrap;
-}
-
-strong{
-	font-weight: normal;
-	font-variant: small-caps;
-}</code>
-								</figure>
-							</li>
-							<li>
-								<p>Closing braces are on their own line.</p>
-							</li>
-						</ol>
-					</section>
-					<section>
-						<h3>Properties</h3>
-						<ol>
-							<li>
-								<p>Properties are each on their own line (even if the selector only has one property) and indented with a single tab.</p>
-								<figure class="wrong">
-									<code class="css full">abbr.name{ white-space: nowrap; }</code>
-								</figure>
-								<figure class="corrected">
-									<code class="css full">abbr.name{
-	white-space: nowrap;
-}</code>
-								</figure>
-							</li>
-							<li>
-								<p>Properties are in alphabetical order, <em>where possible</em>.</p>
-								<p>This isn’t always possible if you’re attempting to override a previous style in the same selector, and in some other cases.</p>
-							</li>
-							<li>
-								<p>Properties are directly followed by a colon, then a single space, then the property value.</p>
-								<figure class="wrong">
-									<code class="css full">blockquote{
-	margin-left:	1em;
-	margin-right:	1em;
-	border:none;
-}</code>
-								</figure>
-								<figure class="corrected">
-									<code class="css full">abbr.name{
-	margin-left: 1em;
-	margin-right: 1em;
-	border: none;
-}</code>
-								</figure>
-							</li>
-							<li>
-								<p>Property values are directly followed by a semicolon, even if it's the last value in a selector.</p>
-								<figure class="wrong">
-									<code class="css full">abbr.name{
-	white-space: nowrap
-}</code>
-								</figure>
-								<figure class="corrected">
-									<code class="css full">abbr.name{
-	white-space: nowrap;
-}</code>
-								</figure>
-							</li>
-						</ol>
-					</section>
-				</section>
-			</section>
-		</article>
-	</main>
-	<footer>
-		<ul>
-			<li><a href="/ebooks/">Ebooks</a></li>
-			<li><a href="/about/">About</a></li>
-			<li><a href="/contribute/">Get Involved</a></li>
-			<li><a href="https://github.com/standardebooks">Github</a></li>
-			<li><a href="/opds/">OPDS</a></li>
-		</ul>
-		<p>Content produced by or for the Standard Ebooks project is dedicated to the <a href="https://en.wikipedia.org/wiki/Public_domain">public domain</a> via the <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0 Universal Public Domain Dedication</a>.</p>
-		<p>Content not produced by or for the Standard Ebooks project but displayed on this website may be subject to copyright.</p>
-		<p><a href="/">Standard Ebooks</a></p>
-	</footer>
-</body>
+<span class="nt">strong</span><span class="p">{</span>
+    <span class="k">font-weight</span><span class="p">:</span> <span class="kc">normal</span><span class="p">;</span>
+    <span class="k">font-variant</span><span class="p">:</span> <span class="kc">small-caps</span><span class="p">;</span>
+<span class="p">}</span></code></figure>
+                    </li>
+                    <li>Closing braces are on their own line.</li>
+                </ol>
+            </section>
+            <section id="properties">
+                <h3>Properties</h3>
+                <ol type="1">
+                    <li>Properties are each on their own line (even if the selector only has one property) and indented with a single tab.
+                        <figure class="wrong"><code class="css full"><span class="nt">abbr</span><span class="p">.</span><span class="nc">name</span><span class="p">{</span> <span class="k">white-space</span><span class="p">:</span> <span class="kc">nowrap</span><span class="p">;</span> <span class="p">}</span></code></figure>
+                        <figure class="corrected"><code class="css full"><span class="nt">abbr</span><span class="p">.</span><span class="nc">name</span><span class="p">{</span>
+    <span class="k">white-space</span><span class="p">:</span> <span class="kc">nowrap</span><span class="p">;</span>
+<span class="p">}</span></code></figure>
+                    </li>
+                    <li>Properties are in alphabetical order, <em>where possible</em>.
+                        <p>This isn’t always possible if you’re attempting to override a previous style in the same selector, and in some other cases.</p>
+                    </li>
+                    <li>Properties are directly followed by a colon, then a single space, then the property value.
+                        <figure class="wrong"><code class="css full"><span class="nt">blockquote</span><span class="p">{</span>
+    <span class="k">margin-left</span><span class="p">:</span>    <span class="mi">1</span><span class="kt">em</span><span class="p">;</span>
+    <span class="k">margin-right</span><span class="p">:</span>   <span class="mi">1</span><span class="kt">em</span><span class="p">;</span>
+    <span class="k">border</span><span class="p">:</span><span class="kc">none</span><span class="p">;</span>
+<span class="p">}</span></code></figure>
+                        <figure class="corrected"><code class="css full"><span class="nt">abbr</span><span class="p">.</span><span class="nc">name</span><span class="p">{</span>
+    <span class="k">margin-left</span><span class="p">:</span> <span class="mi">1</span><span class="kt">em</span><span class="p">;</span>
+    <span class="k">margin-right</span><span class="p">:</span> <span class="mi">1</span><span class="kt">em</span><span class="p">;</span>
+    <span class="k">border</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+<span class="p">}</span></code></figure>
+                    </li>
+                    <li>Property values are directly followed by a semicolon, even if it’s the last value in a selector.
+                        <figure class="wrong"><code class="css full"><span class="nt">abbr</span><span class="p">.</span><span class="nc">name</span><span class="p">{</span>
+    <span class="k">white-space</span><span class="p">:</span> <span class="kc">nowrap</span>
+<span class="p">}</span></code></figure>
+                        <figure class="corrected"><code class="css full"><span class="nt">abbr</span><span class="p">.</span><span class="nc">name</span><span class="p">{</span>
+    <span class="k">white-space</span><span class="p">:</span> <span class="kc">nowrap</span><span class="p">;</span>
+<span class="p">}</span></code></figure>
+                    </li>
+                </ol>
+            </section>
+        </section>
+    </section>
+</article></main></body>
 </html>

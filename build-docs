@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# sudo pip3 install rst2html5
+# pygmentize -S monokai -f html > test.css
+# rst2html5 --stylesheet=test.css /standardebooks.org/www/contribute/test.rst > output.html
+
+filepath=$(realpath "$1")
+filename="${filepath%.*}"
+
+rst2html5 --stylesheet="css/monokai.css" --stylesheet="css/core.css" "${filepath}" > "${filename}.html"
+
+sed -i --regexp-extended 's|<body>|<body><main><article class="manual"|g' "${filename}.html"
+
+sed -i --regexp-extended 's|</body>|</article></main></body>|g' "${filename}.html"
+
+sed -i --regexp-extended 's|<span></span>||g' "${filename}.html"
+
+sed -i --regexp-extended 's|<pre data-language="([^"]+?)">|<figure><code class="\1 full">|g' "${filename}.html"
+
+sed -i --regexp-extended 's|<pre class="([^"]+?)" data-language="([^"]+?)">|<figure class="\1"><code class="\2 full">|g' "${filename}.html"
+
+sed -i --regexp-extended 's|<pre data-language="([^"]+?)" class="([^"]+?)">|<figure class="\2"><code class="\1 full">|g' "${filename}.html"
+
+sed -i --regexp-extended 's|</pre>|</code></figure>|g' "${filename}.html"
+
+# SE extension: :italics:`abc <def>` will generate a link like so: <i><a href="def">abc</a></i>
+sed -i --regexp-extended 's|<em class="i">([^>]+?) &lt;([^<]+?)&gt;</em>|<i><a href="\2">\1</a></i>|g' "${filename}.html"
+
+# SE extension: change <em class="i"> to <i>
+sed -i --regexp-extended 's|<em class="i">([^<]+?)</em>|<i>\1</i>|g' "${filename}.html"

@@ -9,7 +9,7 @@ filename="${filepath%.*}"
 
 rst2html5 --stylesheet="css/monokai.css" --stylesheet="css/core.css" "${filepath}" > "${filename}.html"
 
-sed -i --regexp-extended 's|<body>|<body><main><article class="manual"|g' "${filename}.html"
+sed -i --regexp-extended 's|<body>|<body><main><article class="manual">|g' "${filename}.html"
 
 sed -i --regexp-extended 's|</body>|</article></main></body>|g' "${filename}.html"
 
@@ -28,3 +28,6 @@ sed -i --regexp-extended 's|<em class="i">([^>]+?) &lt;([^<]+?)&gt;</em>|<i><a h
 
 # SE extension: change <em class="i"> to <i>
 sed -i --regexp-extended 's|<em class="i">([^<]+?)</em>|<i>\1</i>|g' "${filename}.html"
+
+# Spaces to tabs
+sed -i --regexp-extended 's|    |\t|g' "${filename}.html"

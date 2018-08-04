@@ -12,6 +12,8 @@
 XHTML and CSS Code Style
 ########################
 
+.. class:: data-start-at-1
+
 The :bash:`clean` tool in the Standard Ebooks toolset formats XHTML code according to our style guidelines. The vast majority of the time its output is correct and no further modifications to code style are necessary.
 
 ****************

@@ -12,6 +12,8 @@
 Metadata
 ########
 
+.. class:: data-start-at-10
+
 Metadata in a Standard Ebooks epub is stored in the :path:`./src/epub/content.opf` file. The file contains some boilerplate that an ebook producer won’t have to touch, and a lot of information that they *will* have to touch as an ebook is produced.
 
 Follow the general structure of the :path:`content.opf` file present in the tools :path:`./templates/` directory. Don’t rearrange the order of anything in there.

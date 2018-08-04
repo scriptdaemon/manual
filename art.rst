@@ -12,6 +12,8 @@
 Art
 ###
 
+.. class:: data-start-at-11
+
 When you create a new Standard Ebooks draft using the :bash:`create-draft` tool, you’ll already have templates for the cover and titlepage images present in :path:`./images/`.
 
 Text in these SVG files is represented as text, not paths, so you can edit them using a text editor and not an SVG editor. Then, the :bash:`build-images` tool converts these text-based source images into path-based compiled images, for distribution in the final epub file. We do this so to avoid having to distribute the font files along with the epub.

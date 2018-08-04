@@ -19,6 +19,7 @@ for filename in *.rst; do
 	| sed --regexp-extended 's|</pre>|</code></figure>|g' \
 	| sed --regexp-extended 's|<em class="i">([^>]+?) &lt;([^<]+?)&gt;</em>|<i><a href="\2">\1</a></i>|g' \
 	| sed --regexp-extended 's|<em class="i">([^<]+?)</em>|<i>\1</i>|g' \
+	| perl -0777 -pe 's|<section(.+) class="data-start-at-([0-9]+)"|<section data-start-at="\2"\1|s' \
 	| cat templates/header.html - templates/footer.html \
 	| perl -pe 'chomp if eof' > "${filename%.*}.html"
 done

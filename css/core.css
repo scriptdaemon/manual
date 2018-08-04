@@ -1406,7 +1406,67 @@ article nav ol li.highlighted:last-child::after{
 	text-transform: uppercase;
 }
 
-.manual section,
+.manual > section[data-start-at='1']{
+	counter-reset: root 1;
+}
+
+.manual > section[data-start-at='2']{
+	counter-reset: root 2;
+}
+
+.manual > section[data-start-at='3']{
+	counter-reset: root 3;
+}
+
+.manual > section[data-start-at='4']{
+	counter-reset: root 4;
+}
+
+.manual > section[data-start-at='5']{
+	counter-reset: root 5;
+}
+
+.manual > section[data-start-at='6']{
+	counter-reset: root 6;
+}
+
+.manual > section[data-start-at='7']{
+	counter-reset: root 7;
+}
+
+.manual > section[data-start-at='8']{
+	counter-reset: root 8;
+}
+
+.manual > section[data-start-at='9']{
+	counter-reset: root 9;
+}
+
+.manual > section[data-start-at='10']{
+	counter-reset: root 10;
+}
+
+.manual > section[data-start-at='11']{
+	counter-reset: root 11;
+}
+
+.manual > section[data-start-at='12']{
+	counter-reset: root 12;
+}
+
+.manual > section[data-start-at='13']{
+	counter-reset: root 13;
+}
+
+.manual > section[data-start-at='14']{
+	counter-reset: root 14;
+}
+
+.manual > section[data-start-at='15']{
+	counter-reset: root 15;
+}
+
+.manual > section section,
 .manual ol{
 	counter-reset: item;
 }
@@ -1429,14 +1489,20 @@ article nav ol li.highlighted:last-child::after{
 	counter-reset: none;
 }
 
-.manual ol li{
+.manual section[data-start-at] ol li{
 	list-style: none;
 }
 
-.manual section::before,
-.manual ol li::before{
+.manual > section[data-start-at] h1::before{
+	content: counters(root, '.');
+	position: absolute;
+	margin-left: -3rem;
+}
+
+.manual > section[data-start-at] section::before,
+.manual section[data-start-at] ol li::before{
 	counter-increment: item;
-	content: counters(item, ".");
+	content: counters(root, '.') '.' counters(item, ".");
 	position: absolute;
 	margin-left: -3rem;
 }

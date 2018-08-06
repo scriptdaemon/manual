@@ -25,13 +25,13 @@ Table of Contents
 
 #.	`Semantic Inflection <semantic-inflection.html>`__
 
-#.	`Sectioning <sectioning.html>`__
-
 #.	`General XHTML Patterns <general-xhtml-patterns.html>`__
 
-#.	`Table of Contents Patterns <toc-patterns.html>`__
+#.	`Sectioning <sectioning.html>`__
 
 #.	`High-Level Structural Patterns <high-level-structural-patterns.html>`__
+
+#.	`Table of Contents Patterns <toc-patterns.html>`__
 
 #.	`Typography <typography.html>`__
 
@@ -39,6 +39,4 @@ Table of Contents
 
 #.	`Art <art.html>`__
 
-#.	`SVG Code Style <code.html>`__
-
-#.	`XHTML <code.html>`__
+#.	`SVG Code Style <svg-code-style.html>`__

@@ -18,6 +18,22 @@ Metadata in a Standard Ebooks epub is stored in the :path:`./src/epub/content.op
 
 Follow the general structure of the :path:`content.opf` file present in the tools :path:`./templates/` directory. Don’t rearrange the order of anything in there.
 
+*****************
+General URL rules
+*****************
+
+#.	URLs used in metadata are https where possible.
+
+#.	URLs used in metadata do not contain query strings, or if a query string is required, only contain the minimum necessary query string to render the base resource.
+
+#.	URLs used for Project Gutenberg page scans look like: :path:`https://www.gutenberg.org/ebooks/<BOOK-ID>`.
+
+#.	URLs used for HathiTrust page scans look like: :path:`https://catalog.hathitrust.org/Record/<RECORD-ID>`.
+
+#.	URLs used for Google Books page scans look like: :path:`https://books.google.com/books?id=<BOOK-ID>`.
+
+#.	URLs used for Internet Archive page scans look like: :path:`https://archive.org/details/<BOOK-ID>`.
+
 ********************
 The ebook identifier
 ********************

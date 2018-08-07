@@ -38,6 +38,17 @@
 		<h1>Metadata</h1>
 		<p>Metadata in a Standard Ebooks epub is stored in the <code class="path">./src/epub/content.opf</code> file. The file contains some boilerplate that an ebook producer won’t have to touch, and a lot of information that they <em>will</em> have to touch as an ebook is produced.</p>
 		<p>Follow the general structure of the <code class="path">content.opf</code> file present in the tools <code class="path">./templates/</code> directory. Don’t rearrange the order of anything in there.</p>
+		<section id="general-url-rules">
+			<h2>General URL rules</h2>
+			<ol type="1">
+				<li>URLs used in metadata are https where possible.</li>
+				<li>URLs used in metadata do not contain query strings, or if a query string is required, only contain the minimum necessary query string to render the base resource.</li>
+				<li>URLs used for Project Gutenberg page scans look like: <code class="path">https://www.gutenberg.org/ebooks/&lt;BOOK-ID&gt;</code>.</li>
+				<li>URLs used for HathiTrust page scans look like: <code class="path">https://catalog.hathitrust.org/Record/&lt;RECORD-ID&gt;</code>.</li>
+				<li>URLs used for Google Books page scans look like: <code class="path">https://books.google.com/books?id=&lt;BOOK-ID&gt;</code>.</li>
+				<li>URLs used for Internet Archive page scans look like: <code class="path">https://archive.org/details/&lt;BOOK-ID&gt;</code>.</li>
+			</ol>
+		</section>
 		<section id="the-ebook-identifier">
 			<h2>The ebook identifier</h2>
 			<ol type="1">

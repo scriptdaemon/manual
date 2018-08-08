@@ -37,118 +37,97 @@
 	<section data-start-at="5" id="general-xhtml-patterns">
 		<h1>General XHTML Patterns</h1>
 		<p>Intro.</p>
-		<section id="xhtml-file-naming-conventions">
-			<h2>XHTML file naming conventions</h2>
-			<!--					 &lt;h3&gt;The &lt;code class="html"&gt;id&lt;/code&gt; attribute&lt;/h3&gt;
-					&lt;section&gt;
-						&lt;h4&gt;&lt;code class="html"&gt;id&lt;/code&gt;s of &lt;code class="html"&gt;&amp;lt;section&amp;gt;&lt;/code&gt;s&lt;/h4&gt;
-						&lt;ol&gt;
-							&lt;li&gt;
-								&lt;p&gt;Each &lt;code class="html"&gt;&amp;lt;section&amp;gt;&lt;/code&gt; has an &lt;code class="html"&gt;id&lt;/code&gt; attribute identical to the filename containing the &lt;code class="html"&gt;&amp;lt;section&amp;gt;&lt;/code&gt;, without the trailing extension.&lt;/p&gt;
-							&lt;/li&gt;
-							&lt;li&gt;
-								&lt;p&gt;In files containing multiple &lt;code class="html"&gt;&amp;lt;section&amp;gt;&lt;/code&gt;s, each &lt;code class="html"&gt;&amp;lt;section&amp;gt;&lt;/code&gt; has an &lt;code class="html"&gt;id&lt;/code&gt; attribute identical to what the filename &lt;em&gt;would&lt;/em&gt; be if the section was in an individual file, without the trailing extension.&lt;/p&gt;
-								&lt;figure class="corrected"&gt;
-							&lt;code class="html"&gt;&amp;lt;body epub:type="bodymatter z3998:fiction"&amp;gt;
-	&amp;lt;article id="the-fox-and-the-grapes" epub:type="volume se:short-story"&amp;gt;
-		&amp;lt;h2 epub:type="title"&amp;gt;The Fox and the Grapes&amp;lt;/h2&amp;gt;
-		&amp;lt;p&amp;gt;...&amp;lt;/p&amp;gt;
-	&amp;lt;/article&amp;gt;
-	&amp;lt;article id="the-goose-that-laid-the-golden-eggs" epub:type="volume se:short-story"&amp;gt;
-		&amp;lt;h2 epub:type="title"&amp;gt;The Goose That Laid the Golden Eggs&amp;lt;/h2&amp;gt;
-		&amp;lt;p&amp;gt;...&amp;lt;/p&amp;gt;
-	&amp;lt;/article&amp;gt;
-&amp;lt;/body&amp;gt;&lt;/code&gt;
-								&lt;/figure&gt;
-							&lt;/li&gt;
-						&lt;/ol&gt;
-					&lt;/section&gt;
-					&lt;section&gt;
-						&lt;h4&gt;&lt;code class="html"&gt;id&lt;/code&gt;s of other elements&lt;/h4&gt;
-						&lt;p&gt;Generally, elements that are not &lt;code class="html"&gt;&amp;lt;section&amp;gt;&lt;/code&gt;s do not have an &lt;code class="html"&gt;id&lt;/code&gt; attribute. However an &lt;code class="html"&gt;id&lt;/code&gt; attribute may be necessary if a particular element is referenced in a link in a different location in the ebook; for example, if a certain paragraph is linked from an endnote.&lt;/p&gt;
-						&lt;ol&gt;
-							&lt;li&gt;
-								&lt;p&gt;&lt;code class="html"&gt;id&lt;/code&gt; attributes are generally used for parts of the document that a reader may wish to navigate to using a hash in the URL. That generally means major structural divisions.&lt;/p&gt;
-							&lt;/li&gt;
-							&lt;li&gt;
-								&lt;p&gt;&lt;code class="html"&gt;id&lt;/code&gt; attributes are not used as hooks for targeting CSS styling.&lt;/p&gt;
-							&lt;/li&gt;
-							&lt;li&gt;
-								&lt;p&gt;If an element requires an &lt;code class="html"&gt;id&lt;/code&gt; attribute, the attribute's value is the name of the tag followed by &lt;code class="path"&gt;-N&lt;/code&gt;, where &lt;code class="path"&gt;N&lt;/code&gt; is the sequence number of the tag start at &lt;code class="html"&gt;1&lt;/code&gt;.&lt;/p&gt;
-								&lt;figure class="corrected"&gt;
-									&lt;code class="html"&gt;&amp;lt;p&amp;gt;See &amp;lt;a href="#p-4"&amp;gt;this paragraph&amp;lt;/a&amp;gt; for more details.&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;...&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;...&amp;lt;/p&amp;gt;
-&amp;lt;p id="p-4"&amp;gt;...&amp;lt;/p&amp;gt;
-&amp;lt;p&amp;gt;...&amp;lt;/p&amp;gt;&lt;/code&gt;
-								&lt;/figure&gt;
-							&lt;/li&gt;
-						&lt;/ol&gt;
-					&lt;/section&gt;
-				&lt;/section&gt;
-				&lt;section&gt;
-					&lt;h3&gt;&lt;code class="html"&gt;&amp;lt;title&amp;gt;&lt;/code&gt; tags&lt;/h3&gt;
-					&lt;ol&gt;
-						&lt;li&gt;
-							&lt;p&gt;The &lt;code class="html"&gt;&amp;lt;title&amp;gt;&lt;/code&gt; tag contains an appropriate description of the local file only. It does not contain the book title.&lt;/p&gt;
-						&lt;/li&gt;
-					&lt;/ol&gt;
-					&lt;section&gt;
-						&lt;h4&gt;Titles of files that are an individual chapter or part division&lt;/h4&gt;
-						&lt;ol&gt;
-							&lt;li&gt;
-								&lt;p&gt;Convert chapter or part numbers that are in Roman numerals to decimal numbers. Do not convert other Roman numerals that may be in the chapter title.&lt;/p&gt;
-								&lt;figure&gt;
-									&lt;code class="html"&gt;&amp;lt;title&amp;gt;Chapter 10&amp;lt;/title&amp;gt;&lt;/code&gt;
-								&lt;/figure&gt;
-							&lt;/li&gt;
-							&lt;li&gt;
-								&lt;p&gt;If a chapter or part has no subtitle, the &lt;code class="html"&gt;&amp;lt;title&amp;gt;&lt;/code&gt; tag contains &lt;code class="html"&gt;Chapter&lt;/code&gt; followed by the chapter number.&lt;/p&gt;
-								&lt;figure&gt;
-									&lt;code class="html"&gt;&amp;lt;title&amp;gt;Chapter 4&amp;lt;/title&amp;gt;&lt;/code&gt;
-								&lt;/figure&gt;
-							&lt;/li&gt;
-							&lt;li&gt;
-								&lt;p&gt;If a chapter or part has a subtitle, the &lt;code class="html"&gt;&amp;lt;title&amp;gt;&lt;/code&gt; tag contains &lt;code class="html"&gt;Chapter&lt;/code&gt;, followed by the chapter number, followed by a colon and a single space, followed by the subtitle.&lt;/p&gt;
-								&lt;figure&gt;
-									&lt;code class="html"&gt;&amp;lt;title&amp;gt;Chapter 4: The Reign of Louis XVI&amp;lt;/title&amp;gt;&lt;/code&gt;
-								&lt;/figure&gt;
-							&lt;/li&gt;
-						&lt;/ol&gt;
-					&lt;/section&gt;
-					&lt;section&gt;
-						&lt;h4&gt;Titles of files that are not chapter or part divisions&lt;/h4&gt;
-						&lt;ol&gt;
-							&lt;li&gt;
-								&lt;p&gt;Files that are not a chapter or a part division, like a preface, introduction, or epigraph, have a &lt;code class="html"&gt;&amp;lt;title&amp;gt;&lt;/code&gt; tag that contains the complete title of the section.&lt;/p&gt;
-								&lt;figure&gt;
-									&lt;code class="html"&gt;&amp;lt;title&amp;gt;Preface&amp;lt;/title&amp;gt;&lt;/code&gt;
-								&lt;/figure&gt;
-							&lt;/li&gt;
-							&lt;li&gt;
-								&lt;p&gt;If a file contains a section with a subtitle, the &lt;code class="html"&gt;&amp;lt;title&amp;gt;&lt;/code&gt; tag contains the title, followed by a colon and a single space, followed by the subtitle.&lt;/p&gt;
-								&lt;figure&gt;
-									&lt;code class="html"&gt;&amp;lt;title&amp;gt;Quevedo and His Works: With an Essay on the Picaresque Novel&amp;lt;/title&amp;gt;&lt;/code&gt;
-								&lt;/figure&gt;
-							&lt;/li&gt;
-						&lt;/ol&gt;
-					&lt;/section&gt;
-				&lt;/section&gt;
-				&lt;section&gt;
-					&lt;h3&gt;Ordered/numbered and unordered lists&lt;/h3&gt;
-					&lt;p&gt;All &lt;code class="html"&gt;&amp;lt;li&amp;gt;&lt;/code&gt; children of &lt;code class="html"&gt;&amp;lt;ol&amp;gt;&lt;/code&gt; and &lt;code class="html"&gt;&amp;lt;ul&amp;gt;&lt;/code&gt; tags have at least one direct child block-level tag.  This is usually a &lt;code class="html"&gt;&amp;lt;p&amp;gt;&lt;/code&gt; tag, but not necessarily; for example, a &lt;code class="html"&gt;&amp;lt;blockquote&amp;gt;&lt;/code&gt; tag might also be appropriate.&lt;/p&gt;
-					&lt;figure class="wrong"&gt;
-						&lt;code class="html"&gt;&amp;lt;ul&amp;gt;
-	&amp;lt;li&amp;gt;Don’t forget to feed the pigs.&amp;lt;/li&amp;gt;
-&amp;lt;/ul&amp;gt;&lt;/code&gt;
-					&lt;/figure&gt;
-					&lt;figure class="corrected"&gt;
-						&lt;code class="html"&gt;&amp;lt;ul&amp;gt;
-	&amp;lt;li&amp;gt;
-		&amp;lt;p&amp;gt;Don’t forget to feed the pigs.&amp;lt;/p&amp;gt;
-	&amp;lt;/li&amp;gt;
-&amp;lt;/ul&amp;gt;&lt;/code&gt;
-					&lt;/figure&gt; -->
+		<section id="the-id-attribute">
+			<h2>The <code class="html">id</code> attribute</h2>
+			<section id="id-attributes-of-section-elements">
+				<h3><code class="html">id</code> attributes of <code class="html"><span class="p">&lt;</span><span class="nt">section</span><span class="p">&gt;</span></code> elements</h3>
+				<ol type="1">
+					<li>Each <code class="html"><span class="p">&lt;</span><span class="nt">section</span><span class="p">&gt;</span></code> has an <code class="html">id</code> attribute identical to the filename containing that <code class="html"><span class="p">&lt;</span><span class="nt">section</span><span class="p">&gt;</span></code>, without the trailing extension.</li>
+					<li>In files containing multiple <code class="html"><span class="p">&lt;</span><span class="nt">section</span><span class="p">&gt;</span></code> elements, each <code class="html"><span class="p">&lt;</span><span class="nt">section</span><span class="p">&gt;</span></code> has an <code class="html">id</code> attribute identical to what the filename <em>would</em> be if the section was in an individual file, without the trailing extension.
+						<figure class="corrected"><code class="html full"><span class="p">&lt;</span><span class="nt">body</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;bodymatter z3998:fiction&quot;</span><span class="p">&gt;</span>
+	<span class="p">&lt;</span><span class="nt">article</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;the-fox-and-the-grapes&quot;</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;volume se:short-story&quot;</span><span class="p">&gt;</span>
+		<span class="p">&lt;</span><span class="nt">h2</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="p">&gt;</span>The Fox and the Grapes<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+		<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+	<span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;</span>
+	<span class="p">&lt;</span><span class="nt">article</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;the-goose-that-laid-the-golden-eggs&quot;</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;volume se:short-story&quot;</span><span class="p">&gt;</span>
+		<span class="p">&lt;</span><span class="nt">h2</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="p">&gt;</span>The Goose That Laid the Golden Eggs<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+		<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+	<span class="p">&lt;/</span><span class="nt">article</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span></code></figure>
+					</li>
+				</ol>
+			</section>
+			<section id="id-attributes-of-other-elements">
+				<h3><code class="html">id</code> attributes of other elements</h3>
+				<ol type="1">
+					<li>Elements that are not <code class="html"><span class="p">&lt;</span><span class="nt">section</span><span class="p">&gt;</span></code> elements do not have an <code class="html">id</code> attribute, unless a part of the ebook, like an endnote, refers to a specific point in the book, and a direct link is desirable.</li>
+					<li><code class="html">id</code> attributes are generally used to identify parts of the document that a reader may wish to navigate to using a hash in the URL. That generally means major structural divisions.</li>
+					<li><code class="html">id</code> attributes are not used as hooks for CSS styling.</li>
+					<li>If an element that is not a <code class="html"><span class="p">&lt;</span><span class="nt">section</span><span class="p">&gt;</span></code> requires an <code class="html">id</code> attribute, the attribute's value is the name of the tag followed by <code class="path">-N</code>, where <code class="path">N</code> is the sequence number of the tag start at <code class="path">1</code>.
+						<figure class="corrected"><code class="html full"><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>See <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#p-4&quot;</span><span class="p">&gt;</span>this paragraph<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span> for more details.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;p-4&quot;</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></code></figure>
+					</li>
+				</ol>
+			</section>
+		</section>
+		<section id="title-tags">
+			<h2><code class="html"><span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span></code> tags</h2>
+			<ol type="1">
+				<li>The <code class="html"><span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span></code> tag contains an appropriate description of the local file only. It does not contain the book title.</li>
+			</ol>
+			<section id="titles-of-files-that-are-an-individual-chapter-or-part-division">
+				<h3>Titles of files that are an individual chapter or part division</h3>
+				<ol type="1">
+					<li>Convert chapter or part numbers that are in Roman numerals to decimal numbers. Do not convert other Roman numerals that may be in the chapter title.
+						<figure class="corrected"><code class="html full"><span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Chapter 10<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span></code></figure>
+					</li>
+					<li>If a chapter or part is only an ordinal and has no title or subtitle, the <code class="html"><span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span></code> tag is <code class="html">Chapter</code> followed by the chapter number.
+						<figure class="corrected"><code class="html full"><span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Chapter 4<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+...
+<span class="p">&lt;</span><span class="nt">h2</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;title z3998:roman&quot;</span><span class="p">&gt;</span>IV<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+...
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>The chapter body...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></code></figure>
+					</li>
+					<li>If a chapter or part has a title or subtitle, the <code class="html"><span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span></code> tag is <code class="html">Chapter</code>, followed by the chapter number in decimal, followed by a colon and a single space, followed by the title or subtitle.
+						<figure class="corrected"><code class="html full"><span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Chapter 6: The Reign of Louis XVI<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+...
+<span class="p">&lt;</span><span class="nt">h2</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;title z3998:roman&quot;</span><span class="p">&gt;</span>
+	<span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>VI<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>&gt;
+	<span class="p">&lt;</span><span class="nt">span</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;subtitle&quot;</span><span class="p">&gt;</span>The Reign of Louis <span class="p">&lt;</span><span class="nt">span</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;z3998:roman&quot;</span><span class="p">&gt;</span>XVI<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+...
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>The chapter body...<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span></code></figure>
+					</li>
+				</ol>
+			</section>
+			<section id="titles-of-files-that-are-not-chapter-or-part-divisions">
+				<h3>Titles of files that are not chapter or part divisions</h3>
+				<ol type="1">
+					<li>Files that are not a chapter or a part division, like a preface, introduction, or epigraph, have a <code class="html"><span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span></code> tag that contains the complete title of the section.
+						<figure class="corrected"><code class="html full"><span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Preface<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span></code></figure>
+					</li>
+					<li>If a file contains a section with a title or subtitle, the <code class="html"><span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span></code> tag contains the title, followed by a colon and a single space, followed by the title or subtitle.
+						<figure class="corrected"><code class="html full"><span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Quevedo and His Works: With an Essay on the Picaresque Novel<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span></code></figure>
+					</li>
+				</ol>
+			</section>
+		</section>
+		<section id="ordered-numbered-and-unordered-lists">
+			<h2>Ordered/numbered and unordered lists</h2>
+			<ol type="1">
+				<li>All <code class="html"><span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span></code> children of <code class="html"><span class="p">&lt;</span><span class="nt">ol</span><span class="p">&gt;</span></code> and <code class="html"><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span></code> tags have at least one direct child block-level tag. This is usually a <code class="html"><span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span></code> tag, but not necessarily; for example, a <code class="html"><span class="p">&lt;</span><span class="nt">blockquote</span><span class="p">&gt;</span></code> tag might also be appropriate.
+					<figure class="wrong"><code class="html full"><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+	<span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>Don’t forget to feed the pigs.<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span></code></figure>
+					<figure class="corrected"><code class="html full"><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+	<span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+		<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Don’t forget to feed the pigs.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+	<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span></code></figure>
+				</li>
+			</ol>
 		</section>
 	</section>
 		</article>

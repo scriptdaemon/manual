@@ -2,7 +2,11 @@
 	:language: html
 .. role:: css(code)
 	:language: css
+.. role:: bash(code)
+	:language: bash
 .. role:: path(code)
+.. role:: italics(emphasis)
+	:class: i
 
 ##############################
 High Level Structural Patterns
@@ -25,16 +29,13 @@ Examples:
 Headers
 *******
 
-#.
-	:html:`<hx>` tags (i.e., :html:`<h1>`–:html:`<h6>`)  are used for headers of sections that are structural divisions of a document.
-	:html:`<hx>` tags *are not* used for headers of components that are not in the table of contents. For example, they would not be used to mark up the the title of a short poem in a chapter, where the poem itself is not a structural component of the larger ebook.
-#.
-	A section containing an :html:`<hx>` appears in the table of contents.
-#.
-	The book's title is implicitly at the :html:`<h1>` level, even if not present in the ebook. Because of the implicit :html:`<h1>`, all other sections begin at :html:`<h2>`.
-#.
-	Each :html:`<hx>` tag uses the correct number for the section's heading level in the overall book, *not* the section's heading level in the individual file.
-	For example, given an ebook with a file named :path:`part-2.xhtml` containing:
+#. :html:`<hx>` tags (i.e., :html:`<h1>`–:html:`<h6>`)  are used for headers of sections that are structural divisions of a document. :html:`<hx>` tags *are not* used for headers of components that are not in the table of contents. For example, they would not be used to mark up the the title of a short poem in a chapter, where the poem itself is not a structural component of the larger ebook.
+
+#. A section containing an :html:`<hx>` appears in the table of contents.
+
+#. The book's title is implicitly at the :html:`<h1>` level, even if not present in the ebook. Because of the implicit :html:`<h1>`, all other sections begin at :html:`<h2>`.
+
+#. Each :html:`<hx>` tag uses the correct number for the section's heading level in the overall book, *not* the section's heading level in the individual file. For example, given an ebook with a file named :path:`part-2.xhtml` containing:
 
 	.. code:: html
 
@@ -62,25 +63,21 @@ Headers
 			</section>
 		</section>
 
-#.
-	Each :html:`<hx>` tag has a direct parent :html:`<section>` tag.
+#. Each :html:`<hx>` tag has a direct parent :html:`<section>` tag.
 
-	#.
-		Sections without titles:
+	#. Sections without titles:
 
 		.. code:: html
 
 			<h2 epub:type="title z3998:roman">XI</h2>
 
-	#.
-		Sections with titles but no ordinal (i.e. chapter) numbers:
+	#. Sections with titles but no ordinal (i.e. chapter) numbers:
 
 		.. code:: html
 
 			<h2 epub:type="title">A Daughter of Albion</h2>
 
-	#.
-		Sections with titles and ordinal (i.e. chapter) numbers:
+	#. Sections with titles and ordinal (i.e. chapter) numbers:
 
 		.. code:: css
 
@@ -96,8 +93,7 @@ Headers
 				<span epub:type="subtitle">Who Stole the Tarts?</span>
 			</h2>
 
-	#.
-		Sections titles and subtitles but no ordinal (i.e. chapter) numbers:
+	#. Sections titles and subtitles but no ordinal (i.e. chapter) numbers:
 
 		.. code:: css
 
@@ -113,8 +109,7 @@ Headers
 				<span epub:type="subtitle">(A Driver’s Story)</span>
 			</h2>
 
-	#.
-		Sections that require titles, but that are not in the table of contents:
+	#. Sections that require titles, but that are not in the table of contents:
 
 		.. code:: css
 

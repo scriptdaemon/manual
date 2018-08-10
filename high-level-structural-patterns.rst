@@ -45,23 +45,27 @@ Headers
 
 	Consider this example for the file :path:`chapter-2-3.xhtml`:
 
-	.. code:: html
+	.. class:: wrong
 
-		<section id="part-2" epub:type="part">
-			<section id="chapter-2-3" epub:type="chapter">
-				<h1 epub:type="title z3998:roman">III</h1>
-				...
+		.. code:: html
+
+			<section id="part-2" epub:type="part">
+				<section id="chapter-2-3" epub:type="chapter">
+					<h1 epub:type="title z3998:roman">III</h1>
+					...
+				</section>
 			</section>
-		</section>
 
-	.. code:: html
+	.. class:: corrected
 
-		<section id="part-2" epub:type="part">
-			<section id="chapter-2-3" epub:type="chapter">
-				<h3 epub:type="title z3998:roman">III</h3>
-				...
+		.. code:: html
+
+			<section id="part-2" epub:type="part">
+				<section id="chapter-2-3" epub:type="chapter">
+					<h3 epub:type="title z3998:roman">III</h3>
+					...
+				</section>
 			</section>
-		</section>
 
 #. Each :html:`<hx>` tag has a direct parent :html:`<section>` tag.
 

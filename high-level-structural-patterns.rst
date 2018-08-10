@@ -192,3 +192,34 @@ Play CSS
 	[epub|type~="z3998:persona"]{
 		font-variant: all-small-caps;
 	}
+
+********
+Endnotes
+********
+
+#.  All footnotes and endnotes should live in :path:`endnotes.xhtml`. The markup for that file should look like:
+
+	.. code:: html
+
+		<section id="endnotes" epub:type="rearnotes">
+			<h2 epub:type="title">Endnotes</h2>
+			<ol>
+				<li id="note-1" epub:type="rearnote">
+					<p>… <a href="../text/chapter-1.xhtml#noteref-1" epub:type="se:referrer">↩</a></p>
+				</li>
+			</ol>
+		</section>
+
+#.  The endnotes’ :html:`id` attributes should be in order and go up by one for each note. The number after the :html:`noteref-` fragment in the referrer link should match the :html:`id` attribute’s number.
+
+#.  Each endnote’s referrer link should point to the correct chapter.
+
+#.  Within the chapter, the link to the endnote should be placed at the appropriate point (after the punctuation if at the end of a sentence). The number in the fragment reference, :html:`id` and text should match each other and the corresponding note in :path:`endnotes.xhtml`. The markup should look like:
+
+	.. code:: html
+
+		<a href="../text/endnotes.xhtml#note-1" id="noteref-1" epub:type="noteref">1</a>
+
+#.  The referrer link should go at the end of the paragraph containing the endnote’s text. If the endnote is multiple paragraphs long then it should be placed at the end of the last paragraph. If the endnote is particularly complex and ends with a quotation, song or something that’s not a paragraph, the link should be placed in an otherwise empty paragraph at the end of the endnote.
+
+#.  If a new note is added before existing ones it can be painful to renumber the later notes. To help with that, there’s a :bash:`reorder-endnotes` tool. Call it with either :bash:`--increment` or :bash:`--decrement`, the endnote number you want to reorder from and the directory you want to reorder.

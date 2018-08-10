@@ -177,6 +177,8 @@ All SE subjects
 
 -	Autobiography
 
+-	Biography
+
 -	Childrens
 
 -	Comedy

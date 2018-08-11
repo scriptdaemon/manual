@@ -21,7 +21,7 @@ Examples:
 #. Plays
 #. Letters
 #. Images (in text; SVG format elsewhere)
-#. LoI
+#. List of illustrations (the LoI)
 #. Endnotes
 #. ???
 
@@ -285,6 +285,46 @@ Complete HTML and CSS markup examples
 		<img alt="A massive whale breaching the water, with a sailor floating in the water directly within the whale’s mouth." src="../images/image-11.jpg" epub:type="z3998:illustration"/>
 		<figcaption>The Whale eats Sailor Jim.</figcaption>
 	</figure>
+
+*******************************
+List of Illustrations (the LoI)
+*******************************
+
+#.  If an ebook has any illustrations that are major structural components of the work (even just one!), then we must include an :path:`loi.xhtml` file at the end of the ebook. This file lists the illustrations in the ebook, along with a short caption or description.
+
+#.  An illustration is a major structural component if, for example: it is an illustration of events in the book, like a full-page drawing or end-of-chapter decoration; it is essential to the plot, like a diagram of a murder scene or a map; or it is a component of the text, like photographs in a documentary narrative.
+
+#.  Illustration that are *not* major structural components would be, for example: drawings used to represent a person's signature, like an X mark; inline drawings representing text in alien languages; drawings used as layout elements to illustrate diagrams.
+
+#.  If the image has a :html:`<figcaption>` element, then use that caption in the LoI. If not, use the image’s :html:`alt` tag, which should be a short prose description of the image used by screen readers.
+
+#.  Links to the images should go directly to their :html:`id` attributes, not just the top of the containing file.
+
+#.  The code below is the template for a basic LoI skeleton. Please copy and paste the entire thing as a starting point for your own LoI:
+
+	.. code:: html
+
+		<?xml version="1.0" encoding="UTF-8"?>
+		<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" epub:prefix="z3998: http://www.daisy.org/z3998/2012/vocab/structure/, se: http://standardebooks.org/vocab/1.0" xml:lang="en-GB">
+			<head>
+				<title>List of Illustrations</title>
+				<link href="../css/core.css" rel="stylesheet" type="text/css"/>
+				<link href="../css/local.css" rel="stylesheet" type="text/css"/>
+			</head>
+			<body epub:type="backmatter">
+				<section id="loi" epub:type="loi">
+					<nav epub:type="loi">
+						<h2 epub:type="title">List of Illustrations</h2>
+						<ol>
+							<li>
+								<a href="../text/preface.xhtml#the-edge-of-the-world">The Edge of the World</a>
+							</li>
+							<!--snip all the way to the end-->
+						</ol>
+					</nav>
+				</section>
+			</body>
+		</html>
 
 ********
 Endnotes

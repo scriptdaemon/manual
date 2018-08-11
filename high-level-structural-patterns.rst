@@ -193,6 +193,99 @@ Play CSS
 		font-variant: all-small-caps;
 	}
 
+******
+Images
+******
+
+#.  All :html:`<img>` tags are required to have an :html:`alt` attribute that uses prose to describe the image in detail; this is what screen reading software will be read aloud.
+
+	-  Describe the image itself in words, which is not the same as writing a caption or describing its place in the book.
+	-  Alt text must be full sentences ended with periods or other appropriate punctuation. Sentence fragments, or complete sentences without ending punctuation, are not acceptable.
+
+	For example:
+
+	.. class:: wrong
+
+		.. code:: html
+
+			<img alt="The illustration for chapter 10" src="...">
+
+	.. class:: wrong
+
+		.. code:: html
+
+			<img alt="Pierre's fruit-filled dinner" src="...">
+
+	.. class:: corrected
+
+		.. code:: html
+
+			<img alt="An apple and a pear inside a bowl, resting on a table." src="...">
+
+	Note that the :html:`alt` text does not necessarily have to be the same as text in the image’s :html:`<figcaption>` element.  You can use :html:`<figcaption>` to write a concise context-dependent caption.
+
+#.  Include an :html:`epub:type` attribute to denote the type of image. Common values are :html:`z3998:illustration` or :html:`z3998:photograph`.
+
+#.  For some images, it’s helpful to invert their colors when the ereader enters night mode.  This is particularly true for black-and-white line art and woodcuts. (Note *black-and-white*, i.e. only two colors, **not** grayscale!)  Include the :html:`se:image.color-depth.black-on-transparent` semantic in the :html`<img>` tag’s :html:`epub:type` to enable color inversion in some ereaders.
+	For that sort of art, save the images as PNG files with a transparent background. You can make the background transparent by using the “Color to alpha” tool available in many image editing programs, like `the GIMP <https://www.gimp.org/>`__.
+
+#.  :html:`<img>` tags that are meant to be aligned on the block level should be contained in a parent :html:`<figure>` tag, with an optional :html:`<figcaption>` sibling.
+
+	- If contained in a :html:`<figure>` tag, the image’s :html:`id` attribute must be on the :html:`<figure>` tag.
+
+#.  Some sources of illustrations may have scanned them directly from the page of an old book, resulting in yellowed, dingy-looking scans of grayscale art. In these cases, convert the image to grayscale to remove the yellow tint.
+
+Complete HTML and CSS markup examples
+=====================================
+
+.. code:: css
+
+	/* If the image is meant to be on its own page, use this selector... */
+	figure.full-page{
+		margin: 0;
+		max-height: 100%;
+		page-break-before: always;
+		page-break-after: always;
+		page-break-inside: avoid;
+		text-align: center;
+	}
+
+	/* If the image is meant to be inline with the text, use this selector... */
+	figure{
+		margin: 1em auto;
+		text-align: center;
+	}
+
+	/* In all cases, also include the below styles */
+	figure img{
+		display: block;
+		margin: auto;
+		max-width: 100%;
+	}
+
+	figure + p{
+		text-indent: 0;
+	}
+
+	figcaption{
+		font-size: .75em;
+		font-style: italic;
+	}
+
+.. code:: html
+
+	<figure id="image-10">
+		<img alt="An apple and a pear inside a bowl, resting on a table." src="../images/image-10.jpg" epub:type="z3998:photograph"/>
+		<figcaption>The Monk’s Repast</figcaption>
+	</figure>
+
+.. code:: html
+
+	<figure class="full-page" id="image-11">
+		<img alt="A massive whale breaching the water, with a sailor floating in the water directly within the whale’s mouth." src="../images/image-11.jpg" epub:type="z3998:illustration"/>
+		<figcaption>The Whale eats Sailor Jim.</figcaption>
+	</figure>
+
 ********
 Endnotes
 ********

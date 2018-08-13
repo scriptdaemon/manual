@@ -5,16 +5,13 @@
 	<title>Style Manual | Standard Ebooks</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/core.css" type="text/css" media="screen">
+	<link rel="stylesheet" href="css/monokai.css" type="text/css" media="screen">
 	<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 	<link rel="manifest" href="/manifest.json">
 	<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#394451">
 	<meta name="theme-color" content="#394451">
-	<link rel="stylesheet" href="js/highlight.js/styles/paraiso-dark.css">
-	<script src="js/jquery-3.3.1.min.js"></script>
-	<script src="js/highlight.js/highlight.pack.js"></script>
-	<script src="js/core.js"></script>
 	<meta property="og:title" content="The Standard Ebooks Structure and Semantics Manual" />
 	<meta property="og:type" content="website" />
 	<meta property="og:url" content="https://standardebooks.org" />
@@ -36,192 +33,269 @@
 	</header>
 	<main>
 		<article class="manual">
-			<section>
-				<h2>High Level Structural Patterns</h2>
-				<p>Section should contain high-level structural patterns for common formatting situations.</p>
-				<p>Examples:</p>
-				<ul>
-					<li>Headers</li>
-					<li>Poetry/verse</li>
-					<li>Plays</li>
-					<li>Letters</li>
-					<li>Images (in text; SVG format elsewhere)</li>
-					<li>LoI</li>
-					<li>Endnotes</li>
-					<li>???</li>
-				</ul>
 
-
-
-				<section>
-					<h2>Headers</h2>
-					<ol>
-						<li>
-							<p><code class="html">&lt;h#&gt;</code> tags (i.e., <code class="html">&lt;h1&gt;</code>–<code class="html">&lt;h6&gt;</code>)  are used for headers of sections that are structural divisions of a document.</p>
-							<p><code class="html">&lt;h#&gt;</code> tags <em>are not</em> used for headers of components that are not in the table of contents. For example, they would not be used to mark up the the title of a short poem in a chapter, where the poem itself is not a structural component of the larger ebook.</p>
+	<section id="high-level-structural-patterns">
+		<h1>High Level Structural Patterns</h1>
+		<p>Section should contain high-level structural patterns for common formatting situations.</p>
+		<p>Examples:</p>
+		<ol type="1">
+			<li>Headers</li>
+			<li>Poetry/verse</li>
+			<li>Plays</li>
+			<li>Letters</li>
+			<li>Images (in text; SVG format elsewhere)</li>
+			<li>List of illustrations (the LoI)</li>
+			<li>Endnotes</li>
+			<li>???</li>
+		</ol>
+		<section id="headers">
+			<h2>Headers</h2>
+			<ol type="1">
+				<li><code class="html"><span class="p">&lt;</span><span class="nt">hx</span><span class="p">&gt;</span></code> tags (i.e., <code class="html"><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span></code>–<code class="html"><span class="p">&lt;</span><span class="nt">h6</span><span class="p">&gt;</span></code>) are used for headers of sections that are structural divisions of a document. <code class="html"><span class="p">&lt;</span><span class="nt">hx</span><span class="p">&gt;</span></code> tags <em>are not</em> used for headers of components that are not in the table of contents. For example, they would not be used to mark up the the title of a short poem in a chapter, where the poem itself is not a structural component of the larger ebook.</li>
+				<li>A section containing an <code class="html"><span class="p">&lt;</span><span class="nt">hx</span><span class="p">&gt;</span></code> appears in the table of contents.</li>
+				<li>The book's title is implicitly at the <code class="html"><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span></code> level, even if not present in the ebook. Because of the implicit <code class="html"><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span></code>, all other sections begin at <code class="html"><span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span></code>.</li>
+				<li>Each <code class="html"><span class="p">&lt;</span><span class="nt">hx</span><span class="p">&gt;</span></code> tag uses the correct number for the section's heading level in the overall book, <em>not</em> the section's heading level in the individual file. For example, given an ebook with a file named <code class="path">part-2.xhtml</code> containing:
+					<figure><code class="html full"><span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;part-2&quot;</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;part&quot;</span><span class="p">&gt;</span>
+	<span class="p">&lt;</span><span class="nt">h2</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="p">&gt;</span>Part <span class="p">&lt;</span><span class="nt">span</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;z3998:roman&quot;</span><span class="p">&gt;</span>II<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span></code></figure>
+					<p>Consider this example for the file <code class="path">chapter-2-3.xhtml</code>:</p>
+					<figure class="wrong"><code class="html full"><span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;part-2&quot;</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;part&quot;</span><span class="p">&gt;</span>
+	<span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;chapter-2-3&quot;</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;chapter&quot;</span><span class="p">&gt;</span>
+		<span class="p">&lt;</span><span class="nt">h1</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;title z3998:roman&quot;</span><span class="p">&gt;</span>III<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+		...
+	<span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span></code></figure>
+					<figure class="corrected"><code class="html full"><span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;part-2&quot;</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;part&quot;</span><span class="p">&gt;</span>
+	<span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;chapter-2-3&quot;</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;chapter&quot;</span><span class="p">&gt;</span>
+		<span class="p">&lt;</span><span class="nt">h3</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;title z3998:roman&quot;</span><span class="p">&gt;</span>III<span class="p">&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+		...
+	<span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span></code></figure>
+				</li>
+				<li>Each <code class="html"><span class="p">&lt;</span><span class="nt">hx</span><span class="p">&gt;</span></code> tag has a direct parent <code class="html"><span class="p">&lt;</span><span class="nt">section</span><span class="p">&gt;</span></code> tag.
+					<ol type="1">
+						<li>Sections without titles:
+							<figure><code class="html full"><span class="p">&lt;</span><span class="nt">h2</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;title z3998:roman&quot;</span><span class="p">&gt;</span>XI<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span></code></figure>
 						</li>
-						<li>
-							<p>A section containing an <code class="html">&lt;h#&gt;</code> appears in the table of contents.</p>
+						<li>Sections with titles but no ordinal (i.e. chapter) numbers:
+							<figure><code class="html full"><span class="p">&lt;</span><span class="nt">h2</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="p">&gt;</span>A Daughter of Albion<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span></code></figure>
 						</li>
-						<li>
-							<p>The book's title is implicitly at the <code class="html">&lt;h1&gt;</code> level, even if not present in the ebook. Because of the implicit <code class="html">&lt;h1&gt;</code>, all other sections begin at <code class="html">&lt;h2&gt;</code>.</p>
+						<li>Sections with titles and ordinal (i.e. chapter) numbers:
+							<figure><code class="css full"><span class="nt">span</span><span class="o">[</span><span class="nt">epub</span><span class="o">|</span><span class="nt">type</span><span class="o">~=</span><span class="s2">&quot;subtitle&quot;</span><span class="o">]</span><span class="p">{</span>
+	<span class="k">display</span><span class="p">:</span> <span class="kc">block</span><span class="p">;</span>
+	<span class="k">font-weight</span><span class="p">:</span> <span class="kc">normal</span><span class="p">;</span>
+<span class="p">}</span></code></figure>
+							<figure><code class="html full"><span class="p">&lt;</span><span class="nt">h2</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="p">&gt;</span>
+	<span class="p">&lt;</span><span class="nt">span</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;z3998:roman&quot;</span><span class="p">&gt;</span>XI<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+	<span class="p">&lt;</span><span class="nt">span</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;subtitle&quot;</span><span class="p">&gt;</span>Who Stole the Tarts?<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span></code></figure>
 						</li>
-						<li>
-							<p>Each <code class="html">&lt;h#&gt;</code> tag uses the correct number for the section's heading level in the overall book, <em>not</em> the section's heading level in the individual file.</p>
-							<p>For example, given an ebook with a file named <code class="path">part-2.xhtml</code> containing:</p>
-							<figure>
-								<code class="html">&lt;section id="part-2" epub:type="part"&gt;
-		&lt;h2 epub:type="title"&gt;Part &lt;span epub:type="z3998:roman"&gt;II&lt;/span&gt;&lt;/h2&gt;
-	&lt;/section&gt;</code>
-							</figure>
-							<p>Consider this example for the file <code class="path">chapter-2-3.xhtml</code>:</p>
-							<figure class="wrong">
-								<code class="html">&lt;section id="part-2" epub:type="part"&gt;
-		&lt;section id="chapter-2-3" epub:type="chapter"&gt;
-			&lt;h1 epub:type="title z3998:roman"&gt;III&lt;/h1&gt;
-			...
-		&lt;/section&gt;
-	&lt;/section&gt;</code>
-							</figure>
-							<figure class="corrected">
-								<code class="html">&lt;section id="part-2" epub:type="part"&gt;
-		&lt;section id="chapter-2-3" epub:type="chapter"&gt;
-			&lt;h3 epub:type="title z3998:roman"&gt;III&lt;/h3&gt;
-			...
-		&lt;/section&gt;
-	&lt;/section&gt;</code>
-							</figure>
+						<li>Sections titles and subtitles but no ordinal (i.e. chapter) numbers:
+							<figure><code class="css full"><span class="nt">span</span><span class="o">[</span><span class="nt">epub</span><span class="o">|</span><span class="nt">type</span><span class="o">~=</span><span class="s2">&quot;subtitle&quot;</span><span class="o">]</span><span class="p">{</span>
+	<span class="k">display</span><span class="p">:</span> <span class="kc">block</span><span class="p">;</span>
+	<span class="k">font-weight</span><span class="p">:</span> <span class="kc">normal</span><span class="p">;</span>
+<span class="p">}</span></code></figure>
+							<figure><code class="html full"><span class="p">&lt;</span><span class="nt">h2</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="p">&gt;</span>
+	<span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>An Adventure<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+	<span class="p">&lt;</span><span class="nt">span</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;subtitle&quot;</span><span class="p">&gt;</span>(A Driver’s Story)<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span></code></figure>
 						</li>
-						<li>
-							<p>Each <code class="html">&lt;h#&gt;</code> tag has a direct parent <code class="html">&lt;section&gt;</code> tag.</p>
+						<li>Sections that require titles, but that are not in the table of contents:
+							<figure><code class="css full"><span class="nt">header</span><span class="p">{</span>
+	<span class="k">font-variant</span><span class="p">:</span> <span class="kc">small-caps</span><span class="p">;</span>
+	<span class="k">margin</span><span class="p">:</span> <span class="mi">1</span><span class="kt">em</span><span class="p">;</span>
+	<span class="k">text-align</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
+<span class="p">}</span></code></figure>
+							<figure><code class="html full"><span class="p">&lt;</span><span class="nt">header</span><span class="p">&gt;</span>
+	<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>The Title of a Short Poem<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">header</span><span class="p">&gt;</span></code></figure>
 						</li>
 					</ol>
-					<section>
-						<h3>Header HTML patterns</h3>
-						<ol>
-							<li>
-								<p>Sections without titles:</p>
-								<figure class="corrected">
-									<code class="html">&lt;h2 epub:type="title z3998:roman"&gt;XI&lt;/h2&gt;</code>
-								</figure>
-							</li>
-							<li>
-								<p>Sections with titles but no ordinal (i.e. chapter) numbers:</p>
-								<figure class="corrected">
-									<code class="html">&lt;h2 epub:type="title"&gt;A Daughter of Albion&lt;/h2&gt;</code>
-								</figure>
-							</li>
-							<li>
-								<p>Sections with titles and ordinal (i.e. chapter) numbers:</p>
-								<figure>
-									<code class="css full">span[epub|type~="subtitle"]{
-		display: block;
-		font-weight: normal;
-	}</code>
-									<code class="html full">&lt;h2 epub:type="title"&gt;
-		&lt;span epub:type="z3998:roman"&gt;XI&lt;/span&gt;
-		&lt;span epub:type="subtitle"&gt;Who Stole the Tarts?&lt;/span&gt;
-	&lt;/h2&gt;</code>
-								</figure>
-							</li>
-							<li>
-								<p>Sections titles and subtitles but no ordinal (i.e. chapter) numbers:</p>
-								<figure>
-									<code class="css full">span[epub|type~="subtitle"]{
-		display: block;
-		font-weight: normal;
-	}</code>
-									<code class="html full">&lt;h2 epub:type="title"&gt;
-		&lt;span&gt;An Adventure&lt;/span&gt;
-		&lt;span epub:type="subtitle"&gt;(A Driver’s Story)&lt;/span&gt;
-	&lt;/h2&gt;</code>
-								</figure>
-							</li>
-							<li>
-								<p>Sections that require titles, but that are not in the table of contents:</p>
-								<figure>
-									<code class="css full">header{
-		font-variant: small-caps;
-		margin: 1em;
-		text-align: center;
-	}</code>
-									<code class="html full">&lt;header&gt;
-		&lt;p&gt;The Title of a Short Poem&lt;/p&gt;
-	&lt;/header&gt;</code>
-								</figure>
-							</li>
-						</ol>
-					</section>
-				</section>
+				</li>
+			</ol>
+		</section>
+		<section id="play-css">
+			<h2>Play CSS</h2>
+			<figure><code class="css full"><span class="o">[</span><span class="nt">epub</span><span class="o">|</span><span class="nt">type</span><span class="o">~=</span><span class="s2">&quot;z3998:drama&quot;</span><span class="o">]</span><span class="p">{</span>
+	<span class="k">border-collapse</span><span class="p">:</span> <span class="kc">collapse</span><span class="p">;</span>
+<span class="p">}</span>
 
+<span class="o">[</span><span class="nt">epub</span><span class="o">|</span><span class="nt">type</span><span class="o">~=</span><span class="s2">&quot;z3998:drama&quot;</span><span class="o">]</span> <span class="nt">tr</span><span class="p">:</span><span class="nd">first-child</span> <span class="nt">td</span><span class="p">{</span>
+	<span class="k">padding-top</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 
+<span class="o">[</span><span class="nt">epub</span><span class="o">|</span><span class="nt">type</span><span class="o">~=</span><span class="s2">&quot;z3998:drama&quot;</span><span class="o">]</span> <span class="nt">tr</span><span class="p">:</span><span class="nd">last-child</span> <span class="nt">td</span><span class="p">{</span>
+	<span class="k">padding-bottom</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 
+<span class="o">[</span><span class="nt">epub</span><span class="o">|</span><span class="nt">type</span><span class="o">~=</span><span class="s2">&quot;z3998:drama&quot;</span><span class="o">]</span> <span class="nt">td</span><span class="p">{</span>
+	<span class="k">vertical-align</span><span class="p">:</span> <span class="kc">top</span><span class="p">;</span>
+	<span class="k">padding</span><span class="p">:</span> <span class="mf">.5</span><span class="kt">em</span><span class="p">;</span>
+<span class="p">}</span>
 
+<span class="o">[</span><span class="nt">epub</span><span class="o">|</span><span class="nt">type</span><span class="o">~=</span><span class="s2">&quot;z3998:drama&quot;</span><span class="o">]</span> <span class="nt">td</span><span class="p">:</span><span class="nd">last-child</span><span class="p">{</span>
+	<span class="k">padding-right</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 
-				<section>
-					Play CSS:
+<span class="o">[</span><span class="nt">epub</span><span class="o">|</span><span class="nt">type</span><span class="o">~=</span><span class="s2">&quot;z3998:drama&quot;</span><span class="o">]</span> <span class="nt">td</span><span class="p">:</span><span class="nd">first-child</span><span class="p">{</span>
+	<span class="k">padding-left</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 
+<span class="o">[</span><span class="nt">epub</span><span class="o">|</span><span class="nt">type</span><span class="o">~=</span><span class="s2">&quot;z3998:drama&quot;</span><span class="o">]</span> <span class="nt">td</span><span class="o">[</span><span class="nt">epub</span><span class="o">|</span><span class="nt">type</span><span class="o">~=</span><span class="s2">&quot;z3998:persona&quot;</span><span class="o">]</span><span class="p">{</span>
+	<span class="k">hyphens</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+	<span class="k">text-align</span><span class="p">:</span> <span class="kc">right</span><span class="p">;</span>
+	<span class="k">width</span><span class="p">:</span> <span class="mi">20</span><span class="kt">%</span><span class="p">;</span>
+<span class="p">}</span>
 
-					[epub|type~="z3998:drama"]{
-						border-collapse: collapse;
-					}
+<span class="o">[</span><span class="nt">epub</span><span class="o">|</span><span class="nt">type</span><span class="o">~=</span><span class="s2">&quot;z3998:drama&quot;</span><span class="o">]</span> <span class="nt">td</span> <span class="nt">p</span><span class="p">{</span>
+	<span class="k">text-indent</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 
-					[epub|type~="z3998:drama"] tr:first-child td{
-						padding-top: 0;
-					}
+<span class="nt">table</span><span class="o">[</span><span class="nt">epub</span><span class="o">|</span><span class="nt">type</span><span class="o">~=</span><span class="s2">&quot;z3998:drama&quot;</span><span class="o">],</span>
+<span class="o">[</span><span class="nt">epub</span><span class="o">|</span><span class="nt">type</span><span class="o">~=</span><span class="s2">&quot;z3998:drama&quot;</span><span class="o">]</span> <span class="nt">table</span><span class="p">{</span>
+	<span class="k">margin</span><span class="p">:</span> <span class="mi">1</span><span class="kt">em</span> <span class="kc">auto</span><span class="p">;</span>
+<span class="p">}</span>
 
-					[epub|type~="z3998:drama"] tr:last-child td{
-						padding-bottom: 0;
-					}
+<span class="o">[</span><span class="nt">epub</span><span class="o">|</span><span class="nt">type</span><span class="o">~=</span><span class="s2">&quot;z3998:stage-direction&quot;</span><span class="o">]</span><span class="p">{</span>
+	<span class="k">font-style</span><span class="p">:</span> <span class="kc">italic</span><span class="p">;</span>
+<span class="p">}</span>
 
-					[epub|type~="z3998:drama"] td{
-						vertical-align: top;
-						padding: .5em;
-					}
+<span class="o">[</span><span class="nt">epub</span><span class="o">|</span><span class="nt">type</span><span class="o">~=</span><span class="s2">&quot;z3998:stage-direction&quot;</span><span class="o">]</span><span class="p">::</span><span class="nd">before</span><span class="p">{</span>
+	<span class="k">content</span><span class="p">:</span> <span class="s2">&quot;(&quot;</span><span class="p">;</span>
+	<span class="k">font-style</span><span class="p">:</span> <span class="kc">normal</span><span class="p">;</span>
+<span class="p">}</span>
 
-					[epub|type~="z3998:drama"] td:last-child{
-						padding-right: 0;
-					}
+<span class="o">[</span><span class="nt">epub</span><span class="o">|</span><span class="nt">type</span><span class="o">~=</span><span class="s2">&quot;z3998:stage-direction&quot;</span><span class="o">]</span><span class="p">::</span><span class="nd">after</span><span class="p">{</span>
+	<span class="k">content</span><span class="p">:</span> <span class="s2">&quot;)&quot;</span><span class="p">;</span>
+	<span class="k">font-style</span><span class="p">:</span> <span class="kc">normal</span><span class="p">;</span>
+<span class="p">}</span>
 
-					[epub|type~="z3998:drama"] td:first-child{
-						padding-left: 0;
-					}
+<span class="o">[</span><span class="nt">epub</span><span class="o">|</span><span class="nt">type</span><span class="o">~=</span><span class="s2">&quot;z3998:persona&quot;</span><span class="o">]</span><span class="p">{</span>
+	<span class="k">font-variant</span><span class="p">:</span> <span class="kc">all-small-caps</span><span class="p">;</span>
+<span class="p">}</span></code></figure>
+		</section>
+		<section id="images">
+			<h2>Images</h2>
+			<ol type="1">
+				<li>All <code class="html"><span class="p">&lt;</span><span class="nt">img</span><span class="p">&gt;</span></code> tags are required to have an <code class="html">alt</code> attribute that uses prose to describe the image in detail; this is what screen reading software will be read aloud.
+					<ul>
+						<li>Describe the image itself in words, which is not the same as writing a caption or describing its place in the book.</li>
+						<li>Alt text must be full sentences ended with periods or other appropriate punctuation. Sentence fragments, or complete sentences without ending punctuation, are not acceptable.</li>
+					</ul>
+					<p>For example:</p>
+					<figure class="wrong"><code class="html full"><span class="p">&lt;</span><span class="nt">img</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;The illustration for chapter 10&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;...&quot;</span><span class="p">&gt;</span></code></figure>
+					<figure class="wrong"><code class="html full"><span class="p">&lt;</span><span class="nt">img</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Pierre&#39;s fruit-filled dinner&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;...&quot;</span><span class="p">&gt;</span></code></figure>
+					<figure class="corrected"><code class="html full"><span class="p">&lt;</span><span class="nt">img</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;An apple and a pear inside a bowl, resting on a table.&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;...&quot;</span><span class="p">&gt;</span></code></figure>
+					<p>Note that the <code class="html">alt</code> text does not necessarily have to be the same as text in the image’s <code class="html"><span class="p">&lt;</span><span class="nt">figcaption</span><span class="p">&gt;</span></code> element. You can use <code class="html"><span class="p">&lt;</span><span class="nt">figcaption</span><span class="p">&gt;</span></code> to write a concise context-dependent caption.</p>
+				</li>
+				<li>Include an <code class="html">epub:type</code> attribute to denote the type of image. Common values are <code class="html">z3998:illustration</code> or <code class="html">z3998:photograph</code>.</li>
+				<li>For some images, it’s helpful to invert their colors when the ereader enters night mode. This is particularly true for black-and-white line art and woodcuts. (Note <em>black-and-white</em>, i.e. only two colors, <strong>not</strong> grayscale!) Include the <code class="html">se:image.color-depth.black-on-transparent</code> semantic in the :html`&lt;img&gt;` tag’s <code class="html">epub:type</code> to enable color inversion in some ereaders. For that sort of art, save the images as PNG files with a transparent background. You can make the background transparent by using the “Color to alpha” tool available in many image editing programs, like <a href="https://www.gimp.org/">the GIMP</a>.</li>
+				<li><code class="html"><span class="p">&lt;</span><span class="nt">img</span><span class="p">&gt;</span></code> tags that are meant to be aligned on the block level should be contained in a parent <code class="html"><span class="p">&lt;</span><span class="nt">figure</span><span class="p">&gt;</span></code> tag, with an optional <code class="html"><span class="p">&lt;</span><span class="nt">figcaption</span><span class="p">&gt;</span></code> sibling.
+					<ul>
+						<li>If contained in a <code class="html"><span class="p">&lt;</span><span class="nt">figure</span><span class="p">&gt;</span></code> tag, the image’s <code class="html">id</code> attribute must be on the <code class="html"><span class="p">&lt;</span><span class="nt">figure</span><span class="p">&gt;</span></code> tag.</li>
+					</ul>
+				</li>
+				<li>Some sources of illustrations may have scanned them directly from the page of an old book, resulting in yellowed, dingy-looking scans of grayscale art. In these cases, convert the image to grayscale to remove the yellow tint.</li>
+			</ol>
+			<section id="complete-html-and-css-markup-examples">
+				<h3>Complete HTML and CSS markup examples</h3>
+				<figure><code class="css full"><span class="c">/* If the image is meant to be on its own page, use this selector... */</span>
+<span class="nt">figure</span><span class="p">.</span><span class="nc">full-page</span><span class="p">{</span>
+	<span class="k">margin</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+	<span class="k">max-height</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+	<span class="k">page-break-before</span><span class="p">:</span> <span class="kc">always</span><span class="p">;</span>
+	<span class="k">page-break-after</span><span class="p">:</span> <span class="kc">always</span><span class="p">;</span>
+	<span class="k">page-break-inside</span><span class="p">:</span> <span class="kc">avoid</span><span class="p">;</span>
+	<span class="k">text-align</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
+<span class="p">}</span>
 
-					[epub|type~="z3998:drama"] td[epub|type~="z3998:persona"]{
-						hyphens: none;
-						text-align: right;
-						width: 20%;
-					}
+<span class="c">/* If the image is meant to be inline with the text, use this selector... */</span>
+<span class="nt">figure</span><span class="p">{</span>
+	<span class="k">margin</span><span class="p">:</span> <span class="mi">1</span><span class="kt">em</span> <span class="kc">auto</span><span class="p">;</span>
+	<span class="k">text-align</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
+<span class="p">}</span>
 
-					[epub|type~="z3998:drama"] td p{
-						text-indent: 0;
-					}
+<span class="c">/* In all cases, also include the below styles */</span>
+<span class="nt">figure</span> <span class="nt">img</span><span class="p">{</span>
+	<span class="k">display</span><span class="p">:</span> <span class="kc">block</span><span class="p">;</span>
+	<span class="k">margin</span><span class="p">:</span> <span class="kc">auto</span><span class="p">;</span>
+	<span class="k">max-width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="p">}</span>
 
-					table[epub|type~="z3998:drama"],
-					[epub|type~="z3998:drama"] table{
-						margin: 1em auto;
-					}
+<span class="nt">figure</span> <span class="o">+</span> <span class="nt">p</span><span class="p">{</span>
+	<span class="k">text-indent</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 
-					[epub|type~="z3998:stage-direction"]{
-						font-style: italic;
-					}
-
-					[epub|type~="z3998:stage-direction"]::before{
-						content: "(";
-						font-style: normal;
-					}
-
-					[epub|type~="z3998:stage-direction"]::after{
-						content: ")";
-						font-style: normal;
-					}
-
-					[epub|type~="z3998:persona"]{
-						font-variant: all-small-caps;
-					}
-
-				</section>
+<span class="nt">figcaption</span><span class="p">{</span>
+	<span class="k">font-size</span><span class="p">:</span> <span class="mf">.75</span><span class="kt">em</span><span class="p">;</span>
+	<span class="k">font-style</span><span class="p">:</span> <span class="kc">italic</span><span class="p">;</span>
+<span class="p">}</span></code></figure>
+				<figure><code class="html full"><span class="p">&lt;</span><span class="nt">figure</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;image-10&quot;</span><span class="p">&gt;</span>
+	<span class="p">&lt;</span><span class="nt">img</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;An apple and a pear inside a bowl, resting on a table.&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;../images/image-10.jpg&quot;</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;z3998:photograph&quot;</span><span class="p">/&gt;</span>
+	<span class="p">&lt;</span><span class="nt">figcaption</span><span class="p">&gt;</span>The Monk’s Repast<span class="p">&lt;/</span><span class="nt">figcaption</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">figure</span><span class="p">&gt;</span></code></figure>
+				<figure><code class="html full"><span class="p">&lt;</span><span class="nt">figure</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;full-page&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;image-11&quot;</span><span class="p">&gt;</span>
+	<span class="p">&lt;</span><span class="nt">img</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;A massive whale breaching the water, with a sailor floating in the water directly within the whale’s mouth.&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;../images/image-11.jpg&quot;</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;z3998:illustration&quot;</span><span class="p">/&gt;</span>
+	<span class="p">&lt;</span><span class="nt">figcaption</span><span class="p">&gt;</span>The Whale eats Sailor Jim.<span class="p">&lt;/</span><span class="nt">figcaption</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">figure</span><span class="p">&gt;</span></code></figure>
 			</section>
+		</section>
+		<section id="list-of-illustrations-the-loi">
+			<h2>List of Illustrations (the LoI)</h2>
+			<ol type="1">
+				<li>If an ebook has any illustrations that are major structural components of the work (even just one!), then we must include an <code class="path">loi.xhtml</code> file at the end of the ebook. This file lists the illustrations in the ebook, along with a short caption or description.</li>
+				<li>An illustration is a major structural component if, for example: it is an illustration of events in the book, like a full-page drawing or end-of-chapter decoration; it is essential to the plot, like a diagram of a murder scene or a map; or it is a component of the text, like photographs in a documentary narrative.</li>
+				<li>Illustration that are <em>not</em> major structural components would be, for example: drawings used to represent a person's signature, like an X mark; inline drawings representing text in alien languages; drawings used as layout elements to illustrate diagrams.</li>
+				<li>If the image has a <code class="html"><span class="p">&lt;</span><span class="nt">figcaption</span><span class="p">&gt;</span></code> element, then use that caption in the LoI. If not, use the image’s <code class="html">alt</code> tag, which should be a short prose description of the image used by screen readers.</li>
+				<li>Links to the images should go directly to their <code class="html">id</code> attributes, not just the top of the containing file.</li>
+				<li>The code below is the template for a basic LoI skeleton. Please copy and paste the entire thing as a starting point for your own LoI:
+					<figure><code class="html full"><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">xmlns</span><span class="o">=</span><span class="s">&quot;http://www.w3.org/1999/xhtml&quot;</span> <span class="na">xmlns:epub</span><span class="o">=</span><span class="s">&quot;http://www.idpf.org/2007/ops&quot;</span> <span class="na">epub:prefix</span><span class="o">=</span><span class="s">&quot;z3998: http://www.daisy.org/z3998/2012/vocab/structure/, se: http://standardebooks.org/vocab/1.0&quot;</span> <span class="na">xml:lang</span><span class="o">=</span><span class="s">&quot;en-GB&quot;</span><span class="p">&gt;</span>
+	<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+		<span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>List of Illustrations<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+		<span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;../css/core.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span><span class="p">/&gt;</span>
+		<span class="p">&lt;</span><span class="nt">link</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;../css/local.css&quot;</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text/css&quot;</span><span class="p">/&gt;</span>
+	<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+	<span class="p">&lt;</span><span class="nt">body</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;backmatter&quot;</span><span class="p">&gt;</span>
+		<span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;loi&quot;</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;loi&quot;</span><span class="p">&gt;</span>
+			<span class="p">&lt;</span><span class="nt">nav</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;loi&quot;</span><span class="p">&gt;</span>
+				<span class="p">&lt;</span><span class="nt">h2</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="p">&gt;</span>List of Illustrations<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+				<span class="p">&lt;</span><span class="nt">ol</span><span class="p">&gt;</span>
+					<span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+						<span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;../text/preface.xhtml#the-edge-of-the-world&quot;</span><span class="p">&gt;</span>The Edge of the World<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+					<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+					<span class="c">&lt;!--snip all the way to the end--&gt;</span>
+				<span class="p">&lt;/</span><span class="nt">ol</span><span class="p">&gt;</span>
+			<span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+		<span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span>
+	<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span></code></figure>
+				</li>
+			</ol>
+		</section>
+		<section id="endnotes">
+			<h2>Endnotes</h2>
+			<ol type="1">
+				<li>All footnotes and endnotes should live in <code class="path">endnotes.xhtml</code>. The markup for that file should look like:
+					<figure><code class="html full"><span class="p">&lt;</span><span class="nt">section</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;endnotes&quot;</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;rearnotes&quot;</span><span class="p">&gt;</span>
+	<span class="p">&lt;</span><span class="nt">h2</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;title&quot;</span><span class="p">&gt;</span>Endnotes<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+	<span class="p">&lt;</span><span class="nt">ol</span><span class="p">&gt;</span>
+		<span class="p">&lt;</span><span class="nt">li</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;note-1&quot;</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;rearnote&quot;</span><span class="p">&gt;</span>
+			<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>… <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;../text/chapter-1.xhtml#noteref-1&quot;</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;se:referrer&quot;</span><span class="p">&gt;</span>↩<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+		<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+	<span class="p">&lt;/</span><span class="nt">ol</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">section</span><span class="p">&gt;</span></code></figure>
+				</li>
+				<li>The endnotes’ <code class="html">id</code> attributes should be in order and go up by one for each note. The number after the <code class="html">noteref-</code> fragment in the referrer link should match the <code class="html">id</code> attribute’s number.</li>
+				<li>Each endnote’s referrer link should point to the correct chapter.</li>
+				<li>Within the chapter, the link to the endnote should be placed at the appropriate point (after the punctuation if at the end of a sentence). The number in the fragment reference, <code class="html">id</code> and text should match each other and the corresponding note in <code class="path">endnotes.xhtml</code>. The markup should look like:
+					<figure><code class="html full"><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;../text/endnotes.xhtml#note-1&quot;</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;noteref-1&quot;</span> <span class="na">epub:type</span><span class="o">=</span><span class="s">&quot;noteref&quot;</span><span class="p">&gt;</span>1<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span></code></figure>
+				</li>
+				<li>The referrer link should go at the end of the paragraph containing the endnote’s text. If the endnote is multiple paragraphs long then it should be placed at the end of the last paragraph. If the endnote is particularly complex and ends with a quotation, song or something that’s not a paragraph, the link should be placed in an otherwise empty paragraph at the end of the endnote.</li>
+				<li>If a new note is added before existing ones it can be painful to renumber the later notes. To help with that, there’s a <code class="bash">reorder-endnotes</code> tool. Call it with either <code class="bash">--increment</code> or <code class="bash">--decrement</code>, the endnote number you want to reorder from and the directory you want to reorder.</li>
+			</ol>
+		</section>
+	</section>
 		</article>
 	</main>
 	<footer>
